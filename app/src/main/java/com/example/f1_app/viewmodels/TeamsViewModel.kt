@@ -1,13 +1,13 @@
-package com.example.f1_app.ui.notifications
+package com.example.f1_app.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class TeamsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is teams Fragment"
     }
     val text: LiveData<String> = _text
 }
