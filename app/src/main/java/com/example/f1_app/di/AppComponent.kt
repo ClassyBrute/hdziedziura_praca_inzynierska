@@ -1,7 +1,7 @@
 package com.example.f1_app.di
 
 import android.app.Application
-import com.example.f1_app.F1App
+import com.example.f1_app.presentation.F1App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

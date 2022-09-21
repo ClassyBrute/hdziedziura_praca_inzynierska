@@ -6,13 +6,13 @@
     <data>
         <variable
             name="vm"
-            type="com.example.f1_app.viewmodels.TeamsViewModel" />
+            type="com.example.f1_app.presentation.viewmodels.teams.TeamsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.TeamsFragment">
+        tools:context=".presentation.ui.TeamsFragment">
 
         <TextView
             android:id="@+id/text_teams"

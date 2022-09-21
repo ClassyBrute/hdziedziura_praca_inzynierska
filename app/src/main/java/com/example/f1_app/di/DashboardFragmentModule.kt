@@ -3,8 +3,8 @@ package com.example.f1_app.di
 import androidx.lifecycle.ViewModel
 import com.example.f1_app.di.scope.FragmentScope
 import com.example.f1_app.di.scope.ViewModelKey
-import com.example.f1_app.ui.ScheduleFragment
-import com.example.f1_app.viewmodels.ScheduleViewModel
+import com.example.f1_app.presentation.ui.ScheduleFragment
+import com.example.f1_app.presentation.viewmodels.schedule.ScheduleViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

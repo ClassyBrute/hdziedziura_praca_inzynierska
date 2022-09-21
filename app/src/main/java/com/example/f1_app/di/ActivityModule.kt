@@ -2,7 +2,7 @@ package com.example.f1_app.di
 
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
-import com.example.f1_app.ui.MainActivity
+import com.example.f1_app.presentation.ui.MainActivity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

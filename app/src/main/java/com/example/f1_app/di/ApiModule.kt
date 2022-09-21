@@ -1,7 +1,7 @@
 package com.example.f1_app.di
 
 import com.example.f1_app.BuildConfig
-import com.example.f1_app.network.RetrofitApiService
+import com.example.f1_app.data.network.RetrofitApiService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 internal class ApiModule {
-    private val BASE_URL = "http://ergast.com/api/f1/"
+    private val BASE_URL = "https://ergast.com/api/f1/"
 
     @Provides
     @Singleton

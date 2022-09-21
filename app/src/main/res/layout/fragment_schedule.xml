@@ -6,14 +6,14 @@
     <data>
         <variable
             name="vm"
-            type="com.example.f1_app.viewmodels.ScheduleViewModel" />
+            type="com.example.f1_app.presentation.viewmodels.schedule.ScheduleViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ScheduleFragment">
+        tools:context=".presentation.ui.ScheduleFragment">
 
         <TextView
             android:id="@+id/text_schedule"

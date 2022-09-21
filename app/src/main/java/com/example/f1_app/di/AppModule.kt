@@ -2,8 +2,8 @@ package com.example.f1_app.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.example.f1_app.di.scope.ActivityScope
-import com.example.f1_app.ui.MainActivity
-import com.example.f1_app.vmFactory.AppViewModelFactory
+import com.example.f1_app.presentation.ui.MainActivity
+import com.example.f1_app.presentation.vmFactory.AppViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

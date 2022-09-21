@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.f1_app.ui.HomeFragment"
+        android:name="com.example.f1_app.presentation.ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_schedule"
-        android:name="com.example.f1_app.ui.ScheduleFragment"
+        android:name="com.example.f1_app.presentation.ui.ScheduleFragment"
         android:label="@string/title_schedule"
         tools:layout="@layout/fragment_schedule" />
 
     <fragment
         android:id="@+id/navigation_drivers"
-        android:name="com.example.f1_app.ui.DriversFragment"
+        android:name="com.example.f1_app.presentation.ui.DriversFragment"
         android:label="@string/title_drivers"
         tools:layout="@layout/fragment_drivers" />
 
     <fragment
         android:id="@+id/navigation_team"
-        android:name="com.example.f1_app.ui.TeamsFragment"
+        android:name="com.example.f1_app.presentation.ui.TeamsFragment"
         android:label="@string/title_team"
         tools:layout="@layout/fragment_teams" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.example.f1_app.ui.HistoryFragment"
+        android:name="com.example.f1_app.presentation.ui.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 </navigation>

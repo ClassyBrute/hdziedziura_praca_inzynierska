@@ -13,11 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".F1App"
+        android:name=".presentation.F1App"
         android:theme="@style/Theme.F1_app"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".presentation.ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/app_name">

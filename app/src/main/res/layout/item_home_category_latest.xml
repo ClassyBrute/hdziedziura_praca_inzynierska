@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemVM"
+            type="com.example.f1_app.presentation.viewmodels.home.item_vm.CarouselDriverVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:onClick="@{() -> itemVM.onRaceClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/latest_results"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/round"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.title}"
+            tools:text="Round 5 - USA"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager=".presentation.ui.layoutManager.HorizontalLayoutManager"
+            app:rvItems="@{itemVM.data}"
+            android:nestedScrollingEnabled="false"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/round"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
