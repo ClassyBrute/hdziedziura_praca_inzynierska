@@ -4,5 +4,6 @@ data class DriverItem(
     val name: String = "",
     val surname: String = "",
     val position: String = "",
-    val team: String = ""
+    val team: String = "",
+    var image: Int = 0
 )

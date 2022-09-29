@@ -39,15 +39,15 @@ class HomeFragment : BaseFragment() {
                             is HomeViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, "Error fetching data", Toast.LENGTH_SHORT
                             ).show()
+
+                            is HomeViewModel.Event.FetchingDoneEvent -> assignImages()
+
                             is HomeViewModel.Event.DriverClickEvent -> Toast.makeText(
-                                context,
-                                "Driver click ${it.position}",
-                                Toast.LENGTH_SHORT
+                                context, "Driver click ${it.position}", Toast.LENGTH_SHORT
                             ).show()
+
                             is HomeViewModel.Event.CarouselClickEvent -> Toast.makeText(
-                                context,
-                                "Race click ${it.position}",
-                                Toast.LENGTH_SHORT
+                                context, "Race click ${it.position}", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }
@@ -58,6 +58,20 @@ class HomeFragment : BaseFragment() {
         binding.vm = viewModel
 
         return binding.root
+    }
+
+    private fun assignImages() {
+        viewModel.latestList.forEach {
+            val name = it.name.lowercase()
+                .replace("\n", "")
+                .replace("é", "e")
+
+            it.image = resources.getIdentifier(
+                name,
+                "drawable",
+                requireActivity().packageName
+            )
+        }
     }
 
     override fun onDestroy() {

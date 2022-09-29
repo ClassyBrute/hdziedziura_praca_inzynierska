@@ -24,7 +24,8 @@ class HomeViewModel @Inject constructor(
     private val events = MutableSharedFlow<Event>()
     val uiEvents: SharedFlow<Event> = events
     val data: ObservableField<List<RecyclerViewItem>> = ObservableField(emptyList())
-    private var latestList: MutableList<DriverItem> = mutableListOf()
+    var latestList: MutableList<DriverItem> = mutableListOf()
+    private var latestRaceName: String = ""
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
@@ -42,7 +43,7 @@ class HomeViewModel @Inject constructor(
         newList.add(
             CarouselDriverVM(
                 CarouselDriverItem(
-                    "testing title",
+                    latestRaceName,
                     latestList
                 )
             ).let {
@@ -64,12 +65,14 @@ class HomeViewModel @Inject constructor(
                 result.data?.forEach {
                     latestList.add(
                         DriverItem(
-                            name = it.driverName,
+                            name = "${it.driverName}\n${it.driverSurname}",
                             position = it.position,
-                            team = it.constructor
+                            team = it.constructor,
                         )
                     )
                 }
+                latestRaceName = result.data?.get(0)?.raceName ?: ""
+                events.emit(Event.FetchingDoneEvent)
             }
             is Resource.Error -> {
                 events.emit(Event.FetchingErrorEvent)
@@ -108,6 +111,7 @@ class HomeViewModel @Inject constructor(
 
     sealed class Event {
         object FetchingErrorEvent : Event()
+        object FetchingDoneEvent : Event()
         class CarouselClickEvent(val item: CarouselDriverItem, val position: Int) : Event()
         class DriverClickEvent(val item: DriverItem, val position: Int) : Event()
     }

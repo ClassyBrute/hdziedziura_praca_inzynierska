@@ -9,70 +9,78 @@
             type="com.example.f1_app.presentation.viewmodels.home.item_vm.DriverVM" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:onClick="@{() -> itemVM.onDriverClick()}"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="@{() -> itemVM.onDriverClick()}">
 
         <androidx.cardview.widget.CardView
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:cardCornerRadius="20dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/card"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{itemVM.item.position}"
-                    tools:text="1"
-                    android:textColor="@color/white"
-                    android:textSize="60sp"
-                    app:layout_constraintTop_toTopOf="@id/card"
-                    app:layout_constraintStart_toStartOf="@id/card" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{itemVM.item.name}"
-                    tools:text="Charles\nLeclerc"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toBottomOf="@id/number"
-                    app:layout_constraintStart_toStartOf="@id/number" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/team"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{itemVM.item.team}"
-                    tools:text="Ferrari"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    app:layout_constraintTop_toBottomOf="@id/name"
-                    app:layout_constraintStart_toStartOf="@id/name" />
+                android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="140dp"
                     android:layout_height="160dp"
+                    android:translationX="5dp"
+                    android:translationY="10dp"
+                    imageUrl="@{itemVM.item.image}"
                     tools:src="@drawable/ic_f1"
-                    android:src="@drawable/ic_f1"
-                    app:layout_constraintBottom_toBottomOf="@id/team"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{itemVM.item.position}"
+                        android:textColor="@color/red"
+                        android:textSize="60sp"
+                        app:layout_constraintStart_toStartOf="@id/card"
+                        app:layout_constraintTop_toTopOf="@id/card"
+                        tools:text="1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lines="2"
+                        android:text="@{itemVM.item.name}"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/number"
+                        app:layout_constraintTop_toBottomOf="@id/number"
+                        tools:text="Charles\nLeclerc" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/team"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{itemVM.item.team}"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@id/name"
+                        app:layout_constraintTop_toBottomOf="@id/name"
+                        tools:text="Ferrari" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.cardview.widget.CardView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </layout>
