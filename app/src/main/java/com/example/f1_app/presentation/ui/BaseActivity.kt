@@ -21,4 +21,9 @@ abstract class BaseActivity : AppCompatActivity(), HasAndroidInjector {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
 }

@@ -11,22 +11,22 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-interface DashboardFragmentModule {
+interface ScheduleFragmentModule {
     @ContributesAndroidInjector(
         modules = [
-            DashboardViewModelModule::class,
+            ScheduleViewModelModule::class,
 
         ]
     )
     @FragmentScope
-    fun contributeDashboardFragment(): ScheduleFragment
+    fun contributeScheduleFragment(): ScheduleFragment
 }
 
 @Module
-internal interface DashboardViewModelModule {
+internal interface ScheduleViewModelModule {
     @Binds
     @IntoMap
     @FragmentScope
     @ViewModelKey(ScheduleViewModel::class)
-    fun bindDashboardVM(viewModel: ScheduleViewModel): ViewModel
+    fun bindScheduleVM(viewModel: ScheduleViewModel): ViewModel
 }

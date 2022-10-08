@@ -9,7 +9,7 @@ import dagger.Provides
 
 @Module(
     includes = [HomeFragmentModule::class,
-        DashboardFragmentModule::class,
+        ScheduleFragmentModule::class,
 
     ]
 )

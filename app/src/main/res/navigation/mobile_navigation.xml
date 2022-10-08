@@ -1,37 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_home">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.f1_app.presentation.ui.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    <include app:graph="@navigation/navigation_home"/>
+    <include app:graph="@navigation/navigation_schedule"/>
+    <include app:graph="@navigation/navigation_drivers"/>
+    <include app:graph="@navigation/navigation_team"/>
+    <include app:graph="@navigation/navigation_history"/>
 
-    <fragment
-        android:id="@+id/navigation_schedule"
-        android:name="com.example.f1_app.presentation.ui.ScheduleFragment"
-        android:label="@string/title_schedule"
-        tools:layout="@layout/fragment_schedule" />
-
-    <fragment
-        android:id="@+id/navigation_drivers"
-        android:name="com.example.f1_app.presentation.ui.DriversFragment"
-        android:label="@string/title_drivers"
-        tools:layout="@layout/fragment_drivers" />
-
-    <fragment
-        android:id="@+id/navigation_team"
-        android:name="com.example.f1_app.presentation.ui.TeamsFragment"
-        android:label="@string/title_team"
-        tools:layout="@layout/fragment_teams" />
-
-    <fragment
-        android:id="@+id/navigation_history"
-        android:name="com.example.f1_app.presentation.ui.HistoryFragment"
-        android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
 </navigation>

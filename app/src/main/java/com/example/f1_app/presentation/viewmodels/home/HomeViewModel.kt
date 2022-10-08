@@ -31,7 +31,7 @@ class HomeViewModel @Inject constructor(
         super.onResume(owner)
         viewModelScope.launch {
             fetchResults()
-            latestList = latestList.distinct().toMutableList()
+            latestList = latestList.distinctBy { it.image } .toMutableList()
         }.invokeOnCompletion {
             createRecyclerItems()
         }

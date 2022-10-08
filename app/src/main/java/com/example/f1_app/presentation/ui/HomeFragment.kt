@@ -19,12 +19,17 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
+    override val showToolbar: Boolean
+        get() = false
+    override val showBottomNavBar: Boolean
+        get() = true
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_home, container, false
         )
