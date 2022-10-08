@@ -5,6 +5,8 @@ import com.example.f1_app.di.scope.FragmentScope
 import com.example.f1_app.di.scope.ViewModelKey
 import com.example.f1_app.domain.use_case.driver.DriverDetailsUseCase
 import com.example.f1_app.domain.use_case.driver.DriverDetailsUseCaseImpl
+import com.example.f1_app.domain.use_case.next_race.NextRaceUseCase
+import com.example.f1_app.domain.use_case.next_race.NextRaceUseCaseImpl
 import com.example.f1_app.domain.use_case.results.ResultsLatestUseCase
 import com.example.f1_app.domain.use_case.results.ResultsLatestUseCaseImpl
 import com.example.f1_app.presentation.ui.HomeFragment
@@ -23,6 +25,8 @@ interface HomeFragmentModule {
             DriverDetailsUseCaseModule::class,
             ResultsRepoModule::class,
             ResultsLatestUseCaseModule::class,
+            NextRaceRepoModule::class,
+            NextRaceUseCaseModule::class,
         ]
     )
     @FragmentScope
@@ -48,4 +52,10 @@ internal interface DriverDetailsUseCaseModule {
 internal interface ResultsLatestUseCaseModule {
     @Binds
     fun bindResultsLatestUseCase(resultsLatestUseCase: ResultsLatestUseCaseImpl): ResultsLatestUseCase
+}
+
+@Module
+internal interface NextRaceUseCaseModule {
+    @Binds
+    fun bindNextRaceUseCase(nextRaceUseCase: NextRaceUseCaseImpl): NextRaceUseCase
 }

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/startFragment">
 
-    <include app:graph="@navigation/navigation_home"/>
-    <include app:graph="@navigation/navigation_schedule"/>
-    <include app:graph="@navigation/navigation_drivers"/>
-    <include app:graph="@navigation/navigation_team"/>
-    <include app:graph="@navigation/navigation_history"/>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.f1_app.presentation.ui.StartFragment"
+        tools:layout="@layout/fragment_start">
+
+        <action
+            android:id="@+id/action_startFragment_to_homeFragment"
+            app:destination="@id/navigation_main"
+            app:popUpTo="@id/startFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <include app:graph="@navigation/navigation_main"/>
 
 </navigation>

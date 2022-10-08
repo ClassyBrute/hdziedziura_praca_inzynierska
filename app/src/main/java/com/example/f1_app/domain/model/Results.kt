@@ -2,6 +2,7 @@ package com.example.f1_app.domain.model
 
 data class Results (
     val raceName: String = "",
+    val round: String = "",
     val number: String = "",
     val position: String = "",
     val points: String = "",

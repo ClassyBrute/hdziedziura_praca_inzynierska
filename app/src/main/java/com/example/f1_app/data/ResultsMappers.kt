@@ -9,6 +9,7 @@ fun LatestResultsDto.toResults(): MutableList<Results> {
         result.add(
             Results(
                 MRData.RaceTable.Races[0].raceName,
+                MRData.RaceTable.round,
                 it.number,
                 it.position,
                 it.points,

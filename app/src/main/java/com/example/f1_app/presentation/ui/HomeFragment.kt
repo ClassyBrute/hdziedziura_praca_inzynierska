@@ -48,11 +48,15 @@ class HomeFragment : BaseFragment() {
                             is HomeViewModel.Event.FetchingDoneEvent -> assignImages()
 
                             is HomeViewModel.Event.DriverClickEvent -> Toast.makeText(
-                                context, "Driver click ${it.position}", Toast.LENGTH_SHORT
+                                context, "Driver click ${it.item.name}", Toast.LENGTH_SHORT
                             ).show()
 
                             is HomeViewModel.Event.CarouselClickEvent -> Toast.makeText(
-                                context, "Race click ${it.position}", Toast.LENGTH_SHORT
+                                context, "Race click ${it.item.title}", Toast.LENGTH_SHORT
+                            ).show()
+
+                            is HomeViewModel.Event.RaceClickEvent -> Toast.makeText(
+                                context, "Race click ${it.item.country}", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginVertical="10dp"
+        android:layout_marginEnd="10dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="200dp"
@@ -33,10 +34,10 @@
                     android:id="@+id/round"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{itemVM.item.round}"
+                    android:text='@{"Round "+itemVM.item.round}'
                     tools:text="Round 6"
                     android:textSize="16sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/red"
                     app:layout_constraintTop_toTopOf="@id/card"
                     app:layout_constraintStart_toStartOf="@id/card" />
 
@@ -46,29 +47,41 @@
                     android:layout_height="wrap_content"
                     android:text="@{itemVM.item.country}"
                     tools:text="Spain"
-                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/round"
                     app:layout_constraintStart_toStartOf="@id/round" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/date"
+                    android:id="@+id/dateFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{itemVM.item.date}"
+                    android:text="@{itemVM.item.dateFrom}"
                     tools:text="20-22 May 2022"
                     android:textSize="16sp"
                     android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/name"
                     app:layout_constraintStart_toStartOf="@id/name" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/dateTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{itemVM.item.dateTo}"
+                    tools:text="20-22 May 2022"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/dateFrom"
+                    app:layout_constraintStart_toStartOf="@id/dateFrom" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     tools:src="@drawable/ic_f1"
-                    app:layout_constraintBottom_toBottomOf="@id/date"
+                    app:layout_constraintBottom_toBottomOf="@id/dateTo"
                     app:layout_constraintTop_toTopOf="@id/round"
-                    app:layout_constraintStart_toEndOf="@id/date" />
+                    app:layout_constraintStart_toEndOf="@id/dateTo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
