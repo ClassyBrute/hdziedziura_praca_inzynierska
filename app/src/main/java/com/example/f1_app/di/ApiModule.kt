@@ -13,14 +13,14 @@ import javax.inject.Singleton
 
 @Module
 internal class ApiModule {
-    private val BASE_URL = "https://ergast.com/api/f1/"
+    private val BASE_URL = "http://ergast.com/api/f1/"
 
     @Provides
     @Singleton
     fun provideHttpClient(): OkHttpClient {
         val builder = OkHttpClient.Builder()
 
-        builder.retryOnConnectionFailure(false)
+        builder.retryOnConnectionFailure(true)
 
         builder.interceptors().add(HttpLoggingInterceptor().apply {
             level =

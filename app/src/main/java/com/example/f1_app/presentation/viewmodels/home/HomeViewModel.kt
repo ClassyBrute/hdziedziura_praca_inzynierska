@@ -36,17 +36,25 @@ class HomeViewModel @Inject constructor(
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
-        viewModelScope.launch {
-            fetchResults()
-            fetchNextRaces()
-            latestList = latestList.distinctBy { it.image }.toMutableList()
-            nextList = nextList.distinctBy { it.round }.toMutableList()
-        }.invokeOnCompletion {
-            createRecyclerItems()
+        if (latestList.isEmpty() && nextList.isEmpty()) {
+            viewModelScope.launch {
+                events.emit(Event.LoadingEvent)
+                fetchResults()
+                fetchNextRaces()
+            }.invokeOnCompletion {
+                viewModelScope.launch {
+                    events.emit(Event.FetchingDoneEvent)
+                }
+            }
+        }
+        else {
+            viewModelScope.launch {
+                events.emit(Event.FetchingDoneEvent)
+            }
         }
     }
 
-    private fun createRecyclerItems() {
+    fun createRecyclerItems() {
         val newList = mutableListOf<RecyclerViewItem>()
 
         newList.add(
@@ -95,14 +103,22 @@ class HomeViewModel @Inject constructor(
                             position = it.position,
                             team = it.constructor,
                         )
-                    }
+                    }.distinctBy { it.name }
                 }
                 latestRaceName = result.data?.get(0)?.raceName ?: ""
                 round = result.data?.get(0)?.round ?: ""
-                events.emit(Event.FetchingDoneEvent)
             }
             is Resource.Error -> {
                 events.emit(Event.FetchingErrorEvent)
+                result.data?.apply {
+                    latestList = this.map {
+                        DriverItem(
+                            it.driverName,
+                            it.position,
+                            it.constructor
+                        )
+                    }
+                }
             }
             else -> {
 
@@ -121,12 +137,21 @@ class HomeViewModel @Inject constructor(
                             dateFrom = it.dateFrom,
                             dateTo = it.dateTo
                         )
-                    }
+                    }.distinctBy { it.round }
                 }
-//                events.emit(Event.FetchingDoneEvent)
             }
             is Resource.Error -> {
                 events.emit(Event.FetchingErrorEvent)
+                result.data?.apply {
+                    nextList = this.map {
+                        RaceItem(
+                            it.round,
+                            it.name,
+                            it.dateFrom,
+                            it.dateTo
+                        )
+                    }
+                }
             }
             else -> {
 
@@ -137,6 +162,7 @@ class HomeViewModel @Inject constructor(
     sealed class Event {
         object FetchingErrorEvent : Event()
         object FetchingDoneEvent : Event()
+        object LoadingEvent : Event()
         class CarouselClickEvent(val item: CarouselDriverItem, val position: Int) : Event()
         class DriverClickEvent(val item: DriverItem, val position: Int) : Event()
         class RaceClickEvent(val item: RaceItem, val position: Int) : Event()

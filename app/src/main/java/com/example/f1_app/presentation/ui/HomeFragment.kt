@@ -45,7 +45,15 @@ class HomeFragment : BaseFragment() {
                                 context, "Error fetching data", Toast.LENGTH_SHORT
                             ).show()
 
-                            is HomeViewModel.Event.FetchingDoneEvent -> assignImages()
+                            is HomeViewModel.Event.LoadingEvent -> {
+                                binding.loading.show()
+                            }
+
+                            is HomeViewModel.Event.FetchingDoneEvent -> {
+                                viewModel.createRecyclerItems()
+                                binding.loading.hide()
+                                assignImages()
+                            }
 
                             is HomeViewModel.Event.DriverClickEvent -> Toast.makeText(
                                 context, "Driver click ${it.item.name}", Toast.LENGTH_SHORT

@@ -3,26 +3,23 @@ package com.example.f1_app.data
 import com.example.f1_app.data.network.dto.LatestResultsDto
 import com.example.f1_app.domain.model.Results
 
-fun LatestResultsDto.toResults(): MutableList<Results> {
-    val result: MutableList<Results> = mutableListOf()
-    MRData.RaceTable.Races[0].Results.forEach {
-        result.add(
-            Results(
-                MRData.RaceTable.Races[0].raceName,
-                MRData.RaceTable.round,
-                it.number,
-                it.position,
-                it.points,
-                it.Driver.givenName,
-                it.Driver.familyName,
-                it.Constructor.name,
-                it.grid,
-                it.laps,
-                it.status,
-                it.Time.time,
-                it.FastestLap.Time.time,
-            )
-        )
+fun LatestResultsDto.toResults() =
+    MRData.RaceTable.Races[0].Results.map {
+        it.toResults(MRData.RaceTable.Races[0].raceName, MRData.RaceTable.round)
     }
-    return result
-}
+
+fun LatestResultsDto.ResultDto.toResults(name: String, round: String) = Results(
+    name,
+    round,
+    number,
+    position,
+    points,
+    Driver.givenName,
+    Driver.familyName,
+    Constructor.name,
+    grid,
+    laps,
+    status,
+    Time.time,
+    FastestLap.Time.time,
+)

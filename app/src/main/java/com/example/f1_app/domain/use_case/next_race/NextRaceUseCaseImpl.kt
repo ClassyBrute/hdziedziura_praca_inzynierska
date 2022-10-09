@@ -12,16 +12,16 @@ class NextRaceUseCaseImpl @Inject constructor(
     private val nextRaceRepository: NextRaceRepository
 ) : NextRaceUseCase {
 
-    override suspend fun execute(): Resource<MutableList<NextRace>> {
+    override suspend fun execute(): Resource<List<NextRace>> {
         return try {
             coroutineScope {
                 val result = nextRaceRepository.nextRace().body()
                 Resource.Success(
-                    result?.toNextRace() ?: mutableListOf(NextRace())
+                    result?.toNextRace() ?: emptyList()
                 )
             }
         } catch (e: IOException) {
-            Resource.Error("Connection error")
+            Resource.Error("Connection error", listOf(NextRace()))
         }
     }
 }

@@ -8,7 +8,5 @@
     <fragment
         android:id="@+id/scheduleFragment"
         android:name="com.example.f1_app.presentation.ui.ScheduleFragment"
-        tools:layout="@layout/fragment_schedule">
-
-    </fragment>
+        tools:layout="@layout/fragment_schedule"/>
 </navigation>

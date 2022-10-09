@@ -12,16 +12,17 @@ class ResultsLatestUseCaseImpl @Inject constructor(
     private val resultsRepository: ResultsRepository
 ) : ResultsLatestUseCase {
 
-    override suspend fun execute(): Resource<MutableList<Results>> {
+    override suspend fun execute(): Resource<List<Results>> {
         return try {
             coroutineScope {
                 val result = resultsRepository.latestResults().body()
                 Resource.Success(
-                    result?.toResults() ?: mutableListOf(Results())
+                    result?.toResults() ?: emptyList()
                 )
             }
         } catch (e: IOException) {
-            Resource.Error("Connection error")
+            println("error")
+            Resource.Error("Connection error", listOf(Results()))
         }
     }
 }

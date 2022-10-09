@@ -4,5 +4,5 @@ import com.example.f1_app.common.Resource
 import com.example.f1_app.domain.model.NextRace
 
 interface NextRaceUseCase {
-    suspend fun execute(): Resource<MutableList<NextRace>>
+    suspend fun execute(): Resource<List<NextRace>>
 }
