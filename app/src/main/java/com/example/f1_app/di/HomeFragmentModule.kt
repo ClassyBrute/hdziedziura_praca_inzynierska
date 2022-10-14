@@ -9,6 +9,10 @@ import com.example.f1_app.domain.use_case.next_race.NextRaceUseCase
 import com.example.f1_app.domain.use_case.next_race.NextRaceUseCaseImpl
 import com.example.f1_app.domain.use_case.results.ResultsLatestUseCase
 import com.example.f1_app.domain.use_case.results.ResultsLatestUseCaseImpl
+import com.example.f1_app.domain.use_case.standings.ConstructorStandingsUseCase
+import com.example.f1_app.domain.use_case.standings.ConstructorStandingsUseCaseImpl
+import com.example.f1_app.domain.use_case.standings.DriverStandingsUseCase
+import com.example.f1_app.domain.use_case.standings.DriverStandingsUseCaseImpl
 import com.example.f1_app.presentation.ui.HomeFragment
 import com.example.f1_app.presentation.viewmodels.home.HomeViewModel
 import dagger.Binds
@@ -20,13 +24,13 @@ import dagger.multibindings.IntoMap
 interface HomeFragmentModule {
     @ContributesAndroidInjector(
         modules = [
+            HomeRepoModule::class,
             HomeViewModelModule::class,
-            DriverRepoModule::class,
             DriverDetailsUseCaseModule::class,
-            ResultsRepoModule::class,
             ResultsLatestUseCaseModule::class,
-            NextRaceRepoModule::class,
             NextRaceUseCaseModule::class,
+            DriverStandingsUseCaseModule::class,
+            ConstructorStandingsUseCaseModule::class,
         ]
     )
     @FragmentScope
@@ -58,4 +62,16 @@ internal interface ResultsLatestUseCaseModule {
 internal interface NextRaceUseCaseModule {
     @Binds
     fun bindNextRaceUseCase(nextRaceUseCase: NextRaceUseCaseImpl): NextRaceUseCase
+}
+
+@Module
+internal interface DriverStandingsUseCaseModule {
+    @Binds
+    fun bindDriverStandingsUseCase(driverStandingsUseCase: DriverStandingsUseCaseImpl): DriverStandingsUseCase
+}
+
+@Module
+internal interface ConstructorStandingsUseCaseModule {
+    @Binds
+    fun bindConstructorStandingsUseCase(constructorStandingsUseCase: ConstructorStandingsUseCaseImpl): ConstructorStandingsUseCase
 }

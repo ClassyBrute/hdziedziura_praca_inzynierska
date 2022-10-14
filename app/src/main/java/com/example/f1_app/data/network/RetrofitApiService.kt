@@ -1,8 +1,6 @@
 package com.example.f1_app.data.network
 
-import com.example.f1_app.data.network.dto.DriverDetailsDto
-import com.example.f1_app.data.network.dto.LatestResultsDto
-import com.example.f1_app.data.network.dto.NextRacesDto
+import com.example.f1_app.data.network.dto.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,4 +15,10 @@ interface RetrofitApiService {
 
     @GET("current.json")
     suspend fun nextRaces(): Response<NextRacesDto>
+
+    @GET("current/driverStandings.json")
+    suspend fun driverStandings(): Response<DriverStandingsDto>
+
+    @GET("current/constructorStandings.json")
+    suspend fun constructorStandings(): Response<ConstructorStandingsDto>
 }

@@ -12,20 +12,40 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> itemVM.onDriverClick()}">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{itemVM.item.position}"
+            android:text="@{itemVM.item.positionStandings}"
             android:textSize="16sp"
             android:textColor="@color/white"
-            tools:text="1"
-            android:layout_margin="10dp"
+            tools:text="10"
+            android:layout_marginVertical="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/name"
             app:layout_constraintBottom_toBottomOf="@id/team"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circle"
+            app:cardCornerRadius="30dp"
+            app:cardBackgroundColor="@color/background"
+            app:layout_constraintStart_toStartOf="@id/position"
+            app:layout_constraintBottom_toBottomOf="@id/position"
+            app:layout_constraintTop_toTopOf="@id/position">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_f1"
+                imageUrl="@{itemVM.item.image}"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/name"
@@ -34,10 +54,11 @@
             android:text="@{itemVM.item.name}"
             android:textSize="16sp"
             android:textColor="@color/white"
+            android:textStyle="bold"
             tools:text="Charles Leclerc"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintStart_toEndOf="@id/position"
+            app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintBottom_toTopOf="@id/team"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -47,19 +68,32 @@
             android:layout_height="wrap_content"
             android:text="@{itemVM.item.team}"
             android:textSize="16sp"
-            android:textColor="@color/white"
+            android:textColor="@color/grey"
             tools:text="Ferrari"
             android:layout_marginHorizontal="10dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toEndOf="@id/position"
+            app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/name"
             app:layout_constraintBottom_toBottomOf="@id/position"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.wins+" wins"}'
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            tools:text="10 wins"
+            android:layout_marginEnd="60dp"
+            app:layout_constraintEnd_toEndOf="@id/points"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{}"
+            android:text='@{itemVM.item.points+" pts"}'
             android:textSize="16sp"
             android:textColor="@color/white"
             tools:text="150 pts"

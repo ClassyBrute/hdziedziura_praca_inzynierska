@@ -9,6 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Orientation
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentHomeBinding
 import com.example.f1_app.presentation.ext.viewModels
@@ -66,6 +69,10 @@ class HomeFragment : BaseFragment() {
                             is HomeViewModel.Event.RaceClickEvent -> Toast.makeText(
                                 context, "Race click ${it.item.country}", Toast.LENGTH_SHORT
                             ).show()
+
+                            is HomeViewModel.Event.ConstructorClickEvent -> Toast.makeText(
+                                context, "Constructor click ${it.item.name}", Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
@@ -81,6 +88,18 @@ class HomeFragment : BaseFragment() {
         viewModel.latestList.forEach {
             val name = it.name.lowercase()
                 .replace("\n", "")
+                .replace("é", "e")
+
+            it.image = resources.getIdentifier(
+                name,
+                "drawable",
+                requireActivity().packageName
+            )
+        }
+
+        viewModel.driverStandingsList.forEach {
+            val name = it.name.lowercase()
+                .replace(" ", "")
                 .replace("é", "e")
 
             it.image = resources.getIdentifier(

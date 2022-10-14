@@ -27,14 +27,14 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    imageUrl="@{itemVM.item.image}"
                     android:layout_width="140dp"
                     android:layout_height="160dp"
                     android:translationX="5dp"
                     android:translationY="10dp"
-                    imageUrl="@{itemVM.item.image}"
-                    tools:src="@drawable/ic_f1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:src="@drawable/ic_f1" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/card"
@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{itemVM.item.team}"
-                        android:textColor="@color/white"
+                        android:textColor="@color/grey"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="@id/name"
                         app:layout_constraintTop_toBottomOf="@id/name"

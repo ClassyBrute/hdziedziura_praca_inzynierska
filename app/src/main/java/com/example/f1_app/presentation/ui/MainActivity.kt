@@ -35,11 +35,6 @@ class MainActivity : BaseActivity() {
         binding.toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
 
         binding.bottomNavigation.setupWithNavController(navController)
-
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
     }
 
     fun setupToolbar(toolbarTitle: String, showToolbar: Boolean) {

@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-data class CarouselDriverVM(
+data class CarouselDriverStandingsVM (
     override val item: CarouselDriverItem
 ) : ItemVm<CarouselDriverItem>(), ItemWithEvent<HomeViewModel.Event>{
     private val events = MutableSharedFlow<HomeViewModel.Event>()
@@ -27,16 +27,10 @@ data class CarouselDriverVM(
                                 events.emit(driverEvent)
                             }
                         }
-                        it.toRecyclerViewHorizontal()
+                        it.toRecyclerViewVertical()
                     }
             }
         )
-    }
-
-    fun onRaceClick() {
-        itemsScope.launch {
-            events.emit(HomeViewModel.Event.CarouselClickEvent(item, position))
-        }
     }
 
     override fun events(): SharedFlow<HomeViewModel.Event> {
@@ -44,4 +38,4 @@ data class CarouselDriverVM(
     }
 }
 
-fun CarouselDriverVM.toRecyclerViewItem() = RecyclerViewItem(R.layout.item_home_category_latest, this)
+fun CarouselDriverStandingsVM.toRecyclerViewItem() = RecyclerViewItem(R.layout.item_home_category_driver_standings, this)
