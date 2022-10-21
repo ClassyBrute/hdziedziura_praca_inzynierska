@@ -8,5 +8,10 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.f1_app.presentation.ui.HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action android:id="@+id/action_home_start"
+            app:destination="@id/navigation_start"
+            app:popUpTo="@id/homeFragment"/>
+    </fragment>
 </navigation>

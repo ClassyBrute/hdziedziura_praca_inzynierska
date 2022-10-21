@@ -47,14 +47,15 @@ class GeneralAdapter : RecyclerView.Adapter<GeneralViewHolder>() {
                 items, newItems
             )
         )
-        items = newItems.toMutableList()
+        items.clear()
+        items.addAll(newItems)
         diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
         super.onDetachedFromRecyclerView(recyclerView)
         items.forEach {
-            it.itemViewModel.itemsScope.cancel()
+            it.itemViewModel.itemsScope.coroutineContext.cancel()
         }
     }
 }
@@ -84,7 +85,7 @@ class DiffUtilCallback(
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldItem = old[oldItemPosition]
         val newItem = new[newItemPosition]
-        return oldItem.hashCode() == newItem.hashCode()
+        return oldItem.layoutId == newItem.layoutId
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Orientation
+import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentHomeBinding
 import com.example.f1_app.presentation.ext.viewModels
@@ -21,7 +18,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var binding: FragmentHomeBinding
+    private var binding: FragmentHomeBinding? = null
     override val showToolbar: Boolean
         get() = false
     override val showBottomNavBar: Boolean
@@ -33,11 +30,10 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_home, container, false
-        )
+        if (binding == null)
+            binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        lifecycle.addObserver(viewModel)
+        viewLifecycleOwner.lifecycle.addObserver(viewModel)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -48,15 +44,8 @@ class HomeFragment : BaseFragment() {
                                 context, "Error fetching data", Toast.LENGTH_SHORT
                             ).show()
 
-                            is HomeViewModel.Event.LoadingEvent -> {
-                                binding.loading.show()
-                            }
-
-                            is HomeViewModel.Event.FetchingDoneEvent -> {
-                                viewModel.createRecyclerItems()
-                                binding.loading.hide()
-                                assignImages()
-                            }
+                            is HomeViewModel.Event.NavigateToStart ->
+                                findNavController().navigate(R.id.action_home_start)
 
                             is HomeViewModel.Event.DriverClickEvent -> Toast.makeText(
                                 context, "Driver click ${it.item.name}", Toast.LENGTH_SHORT
@@ -79,39 +68,14 @@ class HomeFragment : BaseFragment() {
             }
         }
 
-        binding.vm = viewModel
+        binding!!.vm = viewModel
 
-        return binding.root
-    }
-
-    private fun assignImages() {
-        viewModel.latestList.forEach {
-            val name = it.name.lowercase()
-                .replace("\n", "")
-                .replace("é", "e")
-
-            it.image = resources.getIdentifier(
-                name,
-                "drawable",
-                requireActivity().packageName
-            )
-        }
-
-        viewModel.driverStandingsList.forEach {
-            val name = it.name.lowercase()
-                .replace(" ", "")
-                .replace("é", "e")
-
-            it.image = resources.getIdentifier(
-                name,
-                "drawable",
-                requireActivity().packageName
-            )
-        }
+        return binding!!.root
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        binding = null
         lifecycle.removeObserver(viewModel)
     }
 }

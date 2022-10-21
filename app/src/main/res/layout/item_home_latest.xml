@@ -10,6 +10,7 @@
     </data>
 
     <FrameLayout
+        android:id="@+id/latest_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -18,15 +19,18 @@
         android:onClick="@{() -> itemVM.onDriverClick()}">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/latest_card"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/latest_inner_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/latest_driver_image"
                     imageUrl="@{itemVM.item.image}"
                     android:layout_width="140dp"
                     android:layout_height="160dp"
@@ -37,7 +41,7 @@
                     tools:src="@drawable/ic_f1" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/card"
+                    android:id="@+id/card_info"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="10dp"
@@ -52,8 +56,8 @@
                         android:text="@{itemVM.item.position}"
                         android:textColor="@color/red"
                         android:textSize="60sp"
-                        app:layout_constraintStart_toStartOf="@id/card"
-                        app:layout_constraintTop_toTopOf="@id/card"
+                        app:layout_constraintStart_toStartOf="@id/card_info"
+                        app:layout_constraintTop_toTopOf="@id/card_info"
                         tools:text="1" />
 
                     <androidx.appcompat.widget.AppCompatTextView

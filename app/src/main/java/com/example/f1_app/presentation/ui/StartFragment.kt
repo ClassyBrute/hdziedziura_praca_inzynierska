@@ -33,7 +33,7 @@ class StartFragment: BaseFragment() {
         )
 
         binding.buttonStart.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_homeFragment)
+            findNavController().popBackStack()
         }
 
         binding.video.setVideoURI(Uri.parse("android.resource://com.example.f1_app/" + R.raw.f1_video))

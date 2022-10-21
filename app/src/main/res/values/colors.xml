@@ -10,4 +10,13 @@
     <color name="red">#FF0000</color>
     <color name="grey">#99FFFFFF</color>
     <color name="background">#424242</color>
+    <color name="mercedes">#00D1BD</color>
+    <color name="redbull">#0600EE</color>
+    <color name="mclaren">#FE8600</color>
+    <color name="alpine">#008FFE</color>
+    <color name="alphatauri">#2B4562</color>
+    <color name="aston">#006F62</color>
+    <color name="williams">#37BDDC</color>
+    <color name="alfa">#B02039</color>
+    <color name="haas">#B5B9BC</color>
 </resources>

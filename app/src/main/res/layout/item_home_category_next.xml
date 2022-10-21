@@ -11,6 +11,7 @@
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/category_next_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -25,6 +26,7 @@
             android:textColor="@color/white"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/next_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

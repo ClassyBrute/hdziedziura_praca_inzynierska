@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/teams_standings_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> itemVM.onConstructorClick()}">
@@ -28,6 +29,17 @@
             app:layout_constraintTop_toTopOf="@id/team"
             app:layout_constraintBottom_toBottomOf="@id/drivers"/>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/team_color"
+            android:layout_width="5dp"
+            android:layout_height="35dp"
+            tools:background="@color/grey"
+            colorInt="@{itemVM.item.color}"
+            android:layout_marginStart="18dp"
+            app:layout_constraintStart_toStartOf="@id/position"
+            app:layout_constraintBottom_toBottomOf="@id/drivers"
+            app:layout_constraintTop_toTopOf="@id/team"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/team"
             android:layout_width="wrap_content"
@@ -37,9 +49,9 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             tools:text="Ferrari"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintStart_toEndOf="@id/position"
+            app:layout_constraintStart_toStartOf="@id/position"
             app:layout_constraintBottom_toTopOf="@id/drivers"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -51,9 +63,9 @@
             android:textSize="16sp"
             android:textColor="@color/grey"
             tools:text="C.Leclerc | C.Sainz"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintStart_toEndOf="@id/position"
+            app:layout_constraintStart_toStartOf="@id/position"
             app:layout_constraintTop_toBottomOf="@id/team"
             app:layout_constraintBottom_toBottomOf="@id/position"/>
 

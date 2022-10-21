@@ -11,12 +11,14 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/next_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:layout_marginEnd="10dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/next_card"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:onClick="@{() -> itemVM.onRaceClick()}"
@@ -25,7 +27,7 @@
             app:cardCornerRadius="20dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/card"
+                android:id="@+id/next_inner_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10dp"
@@ -39,8 +41,8 @@
                     tools:text="Round 6"
                     android:textSize="16sp"
                     android:textColor="@color/red"
-                    app:layout_constraintTop_toTopOf="@id/card"
-                    app:layout_constraintStart_toStartOf="@id/card" />
+                    app:layout_constraintTop_toTopOf="@id/next_inner_container"
+                    app:layout_constraintStart_toStartOf="@id/next_inner_container" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/name"
@@ -77,11 +79,15 @@
                     app:layout_constraintStart_toStartOf="@id/dateFrom" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="50dp"
+                    android:id="@+id/next_flag"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    imageUrl="@{itemVM.item.image}"
                     tools:src="@drawable/ic_f1"
+                    android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@id/dateTo"
                     app:layout_constraintTop_toTopOf="@id/round"
+                    app:layout_constraintEnd_toEndOf="@id/next_inner_container"
                     app:layout_constraintStart_toEndOf="@id/dateTo" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

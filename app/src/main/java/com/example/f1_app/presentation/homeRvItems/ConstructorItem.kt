@@ -7,4 +7,5 @@ data class ConstructorItem (
     val wins: String = "",
     var driver1: String = "",
     var driver2: String = "",
+    var color: Int? = 0
 )

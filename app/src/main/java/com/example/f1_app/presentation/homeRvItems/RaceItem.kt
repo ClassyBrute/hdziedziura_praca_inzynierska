@@ -4,5 +4,6 @@ data class RaceItem(
     val round: String = "",
     val country: String = "",
     val dateFrom: String = "",
-    val dateTo: String = ""
+    val dateTo: String = "",
+    val image: Int? = 0,
 )

@@ -13,6 +13,7 @@ import com.example.f1_app.domain.use_case.standings.ConstructorStandingsUseCase
 import com.example.f1_app.domain.use_case.standings.DriverStandingsUseCase
 import com.example.f1_app.presentation.homeRvItems.*
 import com.example.f1_app.presentation.viewmodels.home.item_vm.*
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -28,38 +29,42 @@ class HomeViewModel @Inject constructor(
     private val events = MutableSharedFlow<Event>()
     val uiEvents: SharedFlow<Event> = events
     val data: ObservableField<List<RecyclerViewItem>> = ObservableField(emptyList())
-    var latestList: List<DriverItem> = mutableListOf()
-    var nextList: List<RaceItem> = mutableListOf()
-    var driverStandingsList: List<DriverItem> = mutableListOf()
-    var constructorStandingsList: List<ConstructorItem> = mutableListOf()
+    private var latestList: List<DriverItem> = mutableListOf()
+    private var nextList: List<RaceItem> = mutableListOf()
+    private var driverStandingsList: List<DriverItem> = mutableListOf()
+    private var constructorStandingsList: List<ConstructorItem> = mutableListOf()
 
     private var latestRaceName: String = ""
     private var round: String = ""
 
-    override fun onResume(owner: LifecycleOwner) {
-        super.onResume(owner)
-        if (latestList.isEmpty() && nextList.isEmpty() &&
-            driverStandingsList.isEmpty() && constructorStandingsList.isEmpty()) {
-            viewModelScope.launch {
-                events.emit(Event.LoadingEvent)
+    private var homeJob: Job? = null
+    private var startClicked: Boolean = false
+
+    init {
+        homeJob?.cancel()
+        homeJob = viewModelScope.launch {
+            launch {
                 fetchResults()
                 fetchNextRaces()
                 fetchDriverStandings()
                 fetchConstructorStandings()
             }.invokeOnCompletion {
-                viewModelScope.launch {
-                    events.emit(Event.FetchingDoneEvent)
-                }
-            }
-        }
-        else {
-            viewModelScope.launch {
-                events.emit(Event.FetchingDoneEvent)
+                createRecyclerItems()
             }
         }
     }
 
-    fun createRecyclerItems() {
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        viewModelScope.launch {
+            if (!startClicked) {
+                events.emit(Event.NavigateToStart)
+                startClicked = true
+            }
+        }
+    }
+
+    private fun createRecyclerItems() {
         val newList = mutableListOf<RecyclerViewItem>()
 
         newList.add(
@@ -145,6 +150,7 @@ class HomeViewModel @Inject constructor(
                             name = "${it.driverName}\n${it.driverSurname}",
                             position = it.position,
                             team = it.constructor,
+                            image = it.image
                         )
                     }.distinctBy { it.name }
                 }
@@ -156,7 +162,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    //TODO Map maps to countries
+    // TODO date format
     private suspend fun fetchNextRaces() {
         when (val result = nextRaceUseCase.execute()) {
             is Resource.Success -> {
@@ -166,7 +172,8 @@ class HomeViewModel @Inject constructor(
                             round = it.round,
                             country = it.name,
                             dateFrom = it.dateFrom,
-                            dateTo = it.dateTo
+                            dateTo = it.dateTo,
+                            image = it.image
                         )
                     }.distinctBy { it.round }
                 }
@@ -187,7 +194,8 @@ class HomeViewModel @Inject constructor(
                             team = it.constructorName,
                             points = it.points,
                             positionStandings = it.position,
-                            wins = it.wins
+                            wins = it.wins,
+                            image = it.image
                         )
                     }.distinctBy { it.name }
                 }
@@ -197,7 +205,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    // TODO Map colors to constructors
     private suspend fun fetchConstructorStandings() {
         when (val result = constructorStandingsUseCase.execute()) {
             is Resource.Success -> {
@@ -208,6 +215,7 @@ class HomeViewModel @Inject constructor(
                             position = constr.position,
                             points = constr.points,
                             wins = constr.wins,
+                            color = constr.color,
                             driver1 = driverStandingsList.find {
                                 it.team == constr.constructorName
                             }?.surname.toString(),
@@ -225,8 +233,7 @@ class HomeViewModel @Inject constructor(
 
     sealed class Event {
         object FetchingErrorEvent : Event()
-        object FetchingDoneEvent : Event()
-        object LoadingEvent : Event()
+        object NavigateToStart: Event()
         class ConstructorClickEvent(val item: ConstructorItem, val position: Int) : Event()
         class CarouselClickEvent(val item: CarouselDriverItem, val position: Int) : Event()
         class DriverClickEvent(val item: DriverItem, val position: Int) : Event()

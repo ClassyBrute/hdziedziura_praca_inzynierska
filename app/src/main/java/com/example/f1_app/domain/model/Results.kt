@@ -1,6 +1,9 @@
 package com.example.f1_app.domain.model
 
-data class Results (
+import com.example.f1_app.R
+import com.example.f1_app.data.mocks.mockDrivers
+
+data class Results(
     val raceName: String = "",
     val round: String = "",
     val number: String = "",
@@ -13,6 +16,7 @@ data class Results (
     val laps: String = "",
     val status: String = "",
     val time: String = "",
-    val fastestLap: String = ""
+    val fastestLap: String = "",
+    val image: Int? = mockDrivers[driverName] ?: R.drawable.ic_f1
 )
 

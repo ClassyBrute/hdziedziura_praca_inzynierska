@@ -6,7 +6,7 @@ data class RecyclerViewItem(val layoutId: Int, val itemViewModel: ItemVm<*>) {
     val viewType = getViewTypeId()
 
     private fun getViewTypeId(): Int {
-        var result = 31 * itemViewModel.hashCode()
+        var result = 31
         result = 31 * result + layoutId
         return result
     }

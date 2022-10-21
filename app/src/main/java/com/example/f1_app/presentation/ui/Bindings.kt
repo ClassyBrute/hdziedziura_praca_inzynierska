@@ -30,3 +30,10 @@ fun loadImage(view: AppCompatImageView, url: Int?) {
             .into(view)
     }
 }
+
+@BindingAdapter("colorInt")
+fun convertColor(view: AppCompatImageView, value: Int?) {
+    if (value != null) {
+        view.setBackgroundResource(value)
+    }
+}

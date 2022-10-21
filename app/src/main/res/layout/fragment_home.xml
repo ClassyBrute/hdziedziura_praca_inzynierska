@@ -7,42 +7,23 @@
         <variable
             name="vm"
             type="com.example.f1_app.presentation.viewmodels.home.HomeViewModel" />
-        <import type="com.example.f1_app.presentation.ui.layoutManager.HorizontalLayoutManager"/>
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ui.HomeFragment">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:indicatorColor="@color/red"
-            android:indeterminate="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-<!--        <ScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent">-->
-
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 rvItems="@{vm.data}"
                 android:layout_marginStart="16dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
-<!--        </ScrollView>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
