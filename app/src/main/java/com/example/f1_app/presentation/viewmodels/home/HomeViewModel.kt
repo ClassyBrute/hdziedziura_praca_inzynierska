@@ -18,6 +18,9 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(
@@ -162,8 +165,8 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    // TODO date format
     private suspend fun fetchNextRaces() {
+        val format = SimpleDateFormat("yyyy-MM-dd")
         when (val result = nextRaceUseCase.execute()) {
             is Resource.Success -> {
                 result.data?.apply {
@@ -171,8 +174,8 @@ class HomeViewModel @Inject constructor(
                         RaceItem(
                             round = it.round,
                             country = it.name,
-                            dateFrom = it.dateFrom,
-                            dateTo = it.dateTo,
+                            dateFrom = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateFrom)!!),
+                            dateTo = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateTo)!!),
                             image = it.image
                         )
                     }.distinctBy { it.round }

@@ -7,5 +7,7 @@
     <string name="title_history">History</string>
     <string name="latest_results">Latest results</string>
     <string name="next_races">Next races</string>
-    <string name="formula_1_app">FORMULA 1 APP</string>
+    <string name="formula_1_app">Formula 1 App</string>
+    <string name="hubert_dziedziura">Hubert Dziedziura</string>
+    <string name="start">START</string>
 </resources>

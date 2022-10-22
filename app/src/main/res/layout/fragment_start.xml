@@ -20,43 +20,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="580dp"
+            android:background="@drawable/gradient_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <TextView
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="190dp"
+            android:layout_marginStart="16dp"
             android:text="@string/formula_1_app"
-            android:textColor="@color/red"
-            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/white"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_start"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="START"
-            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            android:text="@string/start"
+            android:textSize="20sp"
             android:backgroundTint="@color/red"
             android:textColor="@color/white"
+            app:cornerRadius="30dp"
+            android:insetBottom="0dp"
+            android:insetTop="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text" />
+            app:layout_constraintTop_toBottomOf="@+id/signature_text" />
 
         <TextView
             android:id="@+id/signature_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hubert Dziedziura"
+            android:text="@string/hubert_dziedziura"
             android:textColor="@color/white"
+            android:layout_marginTop="5dp"
             android:textSize="24sp"
-            android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintStart_toStartOf="@id/text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
