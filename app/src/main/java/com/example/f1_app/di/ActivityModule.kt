@@ -18,7 +18,8 @@ import dagger.multibindings.IntoMap
         HomeFragmentModule::class,
         ScheduleFragmentModule::class,
         StartFragmentModule::class,
-
+        ScheduleUpcomingFragmentModule::class,
+        SchedulePastFragmentModule::class
     ]
 )
 interface ActivityModule {

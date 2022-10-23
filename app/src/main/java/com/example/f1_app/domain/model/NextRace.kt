@@ -8,5 +8,6 @@ data class NextRace(
     val name: String = "",
     val dateFrom: String = "",
     val dateTo: String = "",
-    val image: Int? = mockFlags[name] ?: R.drawable.ic_f1
+    val image: Int? = mockFlags[name] ?: R.drawable.ic_f1,
+    val raceName: String = ""
 )

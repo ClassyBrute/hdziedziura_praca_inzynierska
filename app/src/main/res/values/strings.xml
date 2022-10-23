@@ -10,4 +10,8 @@
     <string name="formula_1_app">Formula 1 App</string>
     <string name="hubert_dziedziura">Hubert Dziedziura</string>
     <string name="start">START</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="past">Past</string>
+    <string name="error_fetching">Fetching error</string>
+    <string name="full_standings"><u>Show full standings</u></string>
 </resources>

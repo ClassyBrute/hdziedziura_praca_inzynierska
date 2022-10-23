@@ -13,6 +13,7 @@ import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentHomeBinding
 import com.example.f1_app.presentation.ext.viewModels
 import com.example.f1_app.presentation.viewmodels.home.HomeViewModel
+import com.google.android.material.textview.MaterialTextView
 import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment() {
@@ -62,6 +63,11 @@ class HomeFragment : BaseFragment() {
                             is HomeViewModel.Event.ConstructorClickEvent -> Toast.makeText(
                                 context, "Constructor click ${it.item.name}", Toast.LENGTH_SHORT
                             ).show()
+
+                            is HomeViewModel.Event.ShowDriversEvent -> {
+                                viewModel.data.set(viewModel.newList)
+                                view?.findViewById<MaterialTextView>(R.id.button_show_all)?.visibility = View.GONE
+                            }
                         }
                     }
                 }

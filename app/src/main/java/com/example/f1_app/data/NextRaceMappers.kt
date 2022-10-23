@@ -9,6 +9,7 @@ fun NextRacesDto.toNextRace() =
             it.round,
             it.Circuit.Location.country,
             it.FirstPractice.date,
-            it.date
+            it.date,
+            raceName = it.Circuit.circuitName
         )
     }

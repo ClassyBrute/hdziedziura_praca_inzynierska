@@ -43,6 +43,9 @@ class HomeViewModel @Inject constructor(
     private var homeJob: Job? = null
     private var startClicked: Boolean = false
 
+    private var shortList = mutableListOf<RecyclerViewItem>()
+    var newList = mutableListOf<RecyclerViewItem>()
+
     init {
         homeJob?.cancel()
         homeJob = viewModelScope.launch {
@@ -68,7 +71,7 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun createRecyclerItems() {
-        val newList = mutableListOf<RecyclerViewItem>()
+        val removeList = mutableListOf<RecyclerViewItem>()
 
         newList.add(
             CarouselDriverVM(
@@ -109,7 +112,7 @@ class HomeViewModel @Inject constructor(
             ).toRecyclerViewItem()
         )
 
-        driverStandingsList.forEach { item ->
+        driverStandingsList.forEachIndexed { index, item ->
             DriverVM(
                 item
             ).let {
@@ -118,9 +121,27 @@ class HomeViewModel @Inject constructor(
                         events.emit(driverEvent)
                     }
                 }
-                newList.add(it.toRecyclerViewVertical())
+                if (index < 5) {
+                    newList.add(it.toRecyclerViewVertical())
+                } else {
+                    removeList.add(it.toRecyclerViewVertical())
+                    newList.add(it.toRecyclerViewVertical())
+                }
             }
         }
+
+        newList.add(
+            ShowAllVM(
+                ShowItem()
+            ).let {
+                viewModelScope.launch {
+                    it.events().collectLatest { buttonEvent ->
+                        events.emit(buttonEvent)
+                    }
+                }
+                it.toRecyclerViewItem()
+            }
+        )
 
         newList.add(
             TextVM(
@@ -141,7 +162,8 @@ class HomeViewModel @Inject constructor(
             }
         }
 
-        data.set(newList)
+        shortList.addAll(newList.minus(removeList.toSet()))
+        data.set(shortList)
     }
 
     private suspend fun fetchResults() {
@@ -237,6 +259,7 @@ class HomeViewModel @Inject constructor(
     sealed class Event {
         object FetchingErrorEvent : Event()
         object NavigateToStart: Event()
+        object ShowDriversEvent: Event()
         class ConstructorClickEvent(val item: ConstructorItem, val position: Int) : Event()
         class CarouselClickEvent(val item: CarouselDriverItem, val position: Int) : Event()
         class DriverClickEvent(val item: DriverItem, val position: Int) : Event()

@@ -4,22 +4,24 @@
 
     <data>
         <variable
-            name="itemVM"
-            type="com.example.f1_app.presentation.viewmodels.home.item_vm.CarouselDriverStandingsVM" />
+            name="vm"
+            type="com.example.f1_app.presentation.viewmodels.schedule.SchedulePastViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/category_standings_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/drivers_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:rvItems="@{itemVM.data}"/>
+            android:paddingBottom="48dp"
+            rvItems="@{vm.data}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

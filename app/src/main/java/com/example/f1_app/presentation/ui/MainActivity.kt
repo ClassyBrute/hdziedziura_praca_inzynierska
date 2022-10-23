@@ -68,7 +68,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                 View.GONE
             }
             setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_new_24)
-            title = toolbarTitle
+            binding.toolbarTitle.text = toolbarTitle
+            title = null
         }
     }
 

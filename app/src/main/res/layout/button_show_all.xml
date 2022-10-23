@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemVM"
+            type="com.example.f1_app.presentation.viewmodels.home.item_vm.ShowAllVM" />
+    </data>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/button_show_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="@{() -> itemVM.onButtonClick()}"
+        android:text="@string/full_standings"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</layout>

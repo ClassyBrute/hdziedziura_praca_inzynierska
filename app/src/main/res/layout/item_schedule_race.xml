@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemVM"
+            type="com.example.f1_app.presentation.viewmodels.schedule.item_vm.RaceVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/race_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="@{() -> itemVM.onRaceClick()}">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/circle"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/race_name"
+            app:layout_constraintTop_toTopOf="@id/round">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/country_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/usa"
+                imageUrl="@{itemVM.item.image}"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Round "+itemVM.item.round}'
+            android:textSize="14sp"
+            android:textColor="@color/red"
+            tools:text="Round 5"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.country}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:text="Spain"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintBottom_toTopOf="@id/race_name"
+            app:layout_constraintTop_toBottomOf="@id/round"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/race_name"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.raceName}"
+            android:textSize="16sp"
+            android:textColor="@color/grey"
+            android:ellipsize="end"
+            android:lines="1"
+            tools:text="Circuit de Monaco"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dateFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.dateFrom}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="Jan 19, 2022"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/dateTo"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dateTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.dateTo}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="Jan 20, 2022"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dateFrom"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
