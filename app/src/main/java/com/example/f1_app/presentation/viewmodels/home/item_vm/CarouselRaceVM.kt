@@ -4,8 +4,8 @@ import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import com.example.f1_app.R
 import com.example.f1_app.common.ItemWithEvent
-import com.example.f1_app.presentation.homeRvItems.CarouselRaceItem
 import com.example.f1_app.common.RecyclerViewItem
+import com.example.f1_app.presentation.homeRvItems.CarouselRaceItem
 import com.example.f1_app.presentation.viewmodels.ItemVm
 import com.example.f1_app.presentation.viewmodels.home.HomeViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentSchedulePastBinding
-import com.example.f1_app.databinding.FragmentScheduleUpcomingBinding
 import com.example.f1_app.presentation.ext.parentFragmentViewModels
 import com.example.f1_app.presentation.ext.viewModels
 import com.example.f1_app.presentation.viewmodels.schedule.SchedulePastViewModel

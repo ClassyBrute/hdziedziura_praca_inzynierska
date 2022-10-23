@@ -1,7 +1,9 @@
 package com.example.f1_app.presentation.viewmodels.schedule
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.*
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.f1_app.presentation.homeRvItems.RaceItem
 import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapter
 import kotlinx.coroutines.flow.MutableSharedFlow

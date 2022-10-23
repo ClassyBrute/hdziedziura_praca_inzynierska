@@ -3,7 +3,6 @@ package com.example.f1_app.di
 import androidx.lifecycle.ViewModel
 import com.example.f1_app.di.scope.FragmentScope
 import com.example.f1_app.di.scope.ViewModelKey
-import com.example.f1_app.domain.use_case.results.ResultsLatestUseCase
 import com.example.f1_app.presentation.ui.SchedulePastFragment
 import com.example.f1_app.presentation.viewmodels.schedule.SchedulePastViewModel
 import dagger.Binds
