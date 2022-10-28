@@ -1,13 +1,35 @@
 package com.example.f1_app.presentation.viewmodels.history
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.databinding.ObservableField
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.f1_app.presentation.homeRvItems.ConstructorItem
+import com.example.f1_app.presentation.homeRvItems.DriverItem
+import com.example.f1_app.presentation.homeRvItems.RaceItem
+import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapter
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HistoryViewModel : ViewModel() {
+class HistoryViewModel @Inject constructor(
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is history Fragment"
+) : ViewModel(), DefaultLifecycleObserver {
+    private val events = MutableSharedFlow<Event>()
+    val adapter: ObservableField<ViewPagerAdapter> = ObservableField()
+    val uiEvents: SharedFlow<Event> = events
+
+    fun emitInnerEvents(event: Event) {
+        viewModelScope.launch {
+            events.emit(event)
+        }
     }
-    val text: LiveData<String> = _text
+
+    sealed class Event {
+        object FetchingErrorEvent : Event()
+        class DriverClickEvent(val item: DriverItem, val position: Int) : Event()
+        class ConstructorClickEvent(val item: ConstructorItem, val position: Int) : Event()
+        class RaceClickEvent(val item: RaceItem, val position: Int) : Event()
+    }
 }

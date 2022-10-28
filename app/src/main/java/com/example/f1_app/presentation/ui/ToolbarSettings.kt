@@ -7,4 +7,6 @@ interface ToolbarSettings {
         get() = false
     val toolbarTitle: String
         get() = ""
+    val showSeason: Boolean
+        get() = false
 }

@@ -6,8 +6,8 @@
 
     <include app:graph="@navigation/navigation_home_tab"/>
     <include app:graph="@navigation/navigation_schedule_tab"/>
-<!--    <include app:graph="@navigation/navigation_drivers"/>-->
-<!--    <include app:graph="@navigation/navigation_team"/>-->
-<!--    <include app:graph="@navigation/navigation_history"/>-->
+    <include app:graph="@navigation/navigation_drivers_tab"/>
+    <include app:graph="@navigation/navigation_team_tab"/>
+    <include app:graph="@navigation/navigation_history_tab"/>
 
 </navigation>

@@ -12,17 +12,17 @@
         android:title="@string/title_schedule" />
 
     <item
-        android:id="@id/navigation_drivers"
+        android:id="@+id/navigation_drivers_tab"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="@string/title_drivers" />
 
     <item
-        android:id="@id/navigation_team"
+        android:id="@+id/navigation_team_tab"
         android:icon="@drawable/ic_baseline_directions_car_24"
         android:title="@string/title_team" />
 
     <item
-        android:id="@id/navigation_history"
+        android:id="@+id/navigation_history_tab"
         android:icon="@drawable/ic_baseline_history_24"
         android:title="@string/title_history" />
 

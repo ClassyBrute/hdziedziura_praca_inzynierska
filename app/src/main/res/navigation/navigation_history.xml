@@ -8,8 +8,5 @@
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.f1_app.presentation.ui.HistoryFragment"
-        tools:layout="@layout/fragment_history">
-
-    </fragment>
-
+        tools:layout="@layout/fragment_history"/>
 </navigation>

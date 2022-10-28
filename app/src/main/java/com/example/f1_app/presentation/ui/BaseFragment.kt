@@ -33,7 +33,7 @@ abstract class BaseFragment : Fragment(), HasAndroidInjector, ToolbarSettings {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         (requireActivity() as MainActivity).apply {
             setupBottomNav(showBottomNavBar)
-            setupToolbar(toolbarTitle, showToolbar)
+            setupToolbar(toolbarTitle, showToolbar, showSeason)
         }
         return view
     }

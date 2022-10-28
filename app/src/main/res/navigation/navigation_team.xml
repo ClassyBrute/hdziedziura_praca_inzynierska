@@ -8,8 +8,5 @@
     <fragment
         android:id="@+id/teamFragment"
         android:name="com.example.f1_app.presentation.ui.TeamsFragment"
-        tools:layout="@layout/fragment_teams">
-
-    </fragment>
-
+        tools:layout="@layout/fragment_teams"/>
 </navigation>

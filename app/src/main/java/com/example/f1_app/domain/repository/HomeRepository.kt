@@ -9,4 +9,7 @@ interface HomeRepository {
     suspend fun latestResults(): Response<LatestResultsDto>
     suspend fun driverStandings(): Response<DriverStandingsDto>
     suspend fun constructorStandings(): Response<ConstructorStandingsDto>
+    suspend fun driverStandingsSeason(season: String): Response<DriverStandingsDto>
+    suspend fun constructorStandingsSeason(season: String): Response<ConstructorStandingsDto>
+    suspend fun racesSeason(season: String): Response<NextRacesDto>
 }

@@ -8,8 +8,5 @@
     <fragment
         android:id="@+id/driversFragment"
         android:name="com.example.f1_app.presentation.ui.DriversFragment"
-        tools:layout="@layout/fragment_drivers">
-
-    </fragment>
-
+        tools:layout="@layout/fragment_drivers"/>
 </navigation>

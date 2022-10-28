@@ -21,4 +21,13 @@ interface RetrofitApiService {
 
     @GET("current/constructorStandings.json")
     suspend fun constructorStandings(): Response<ConstructorStandingsDto>
+
+    @GET("{season}/driverStandings.json")
+    suspend fun driverStandingsSeason(@Path("season") season: String): Response<DriverStandingsDto>
+
+    @GET("{season}/constructorStandings.json")
+    suspend fun constructorStandingsSeason(@Path("season") season: String): Response<ConstructorStandingsDto>
+
+    @GET("{season}.json")
+    suspend fun racesSeason(@Path("season") season: String): Response<NextRacesDto>
 }

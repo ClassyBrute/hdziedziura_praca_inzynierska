@@ -1,4 +1,4 @@
-package com.example.f1_app.presentation.viewmodels.drivers
+package com.example.f1_app.presentation.viewmodels.history
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -7,28 +7,28 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.f1_app.common.RecyclerViewItem
 import com.example.f1_app.common.Resource
-import com.example.f1_app.domain.use_case.standings.DriverStandingsUseCase
+import com.example.f1_app.domain.use_case.standings.DriverStandingsSeasonUseCase
 import com.example.f1_app.presentation.homeRvItems.DriverItem
-import com.example.f1_app.presentation.viewmodels.drivers.item_vm.DriverVM
-import com.example.f1_app.presentation.viewmodels.drivers.item_vm.toRecyclerViewItem
+import com.example.f1_app.presentation.viewmodels.history.item_vm.DriverVM
+import com.example.f1_app.presentation.viewmodels.history.item_vm.toRecyclerViewItem
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DriversViewModel @Inject constructor(
-    private val driverStandingsUseCase: DriverStandingsUseCase
+class HistoryDriversViewModel @Inject constructor(
+    private val driverStandingsSeasonUseCase: DriverStandingsSeasonUseCase,
 ) : ViewModel(), DefaultLifecycleObserver {
-    private val events = MutableSharedFlow<Event>()
-    val uiEvents: SharedFlow<Event> = events
+    val events = MutableSharedFlow<HistoryViewModel.Event>()
+    val uiEvents: SharedFlow<HistoryViewModel.Event> = events
     val data: ObservableField<List<RecyclerViewItem>> = ObservableField(emptyList())
     private var driverStandingsList: List<DriverItem> = mutableListOf()
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
         viewModelScope.launch {
-            fetchDriverStandings()
+            fetchDrivers()
         }.invokeOnCompletion {
             createRecyclerItems()
         }
@@ -54,8 +54,8 @@ class DriversViewModel @Inject constructor(
         data.set(newList)
     }
 
-    private suspend fun fetchDriverStandings() {
-        when (val result = driverStandingsUseCase.execute()) {
+        private suspend fun fetchDrivers() {
+        when (val result = driverStandingsSeasonUseCase.execute("2021")) {
             is Resource.Success -> {
                 result.data?.apply {
                     driverStandingsList = this.map {
@@ -71,14 +71,9 @@ class DriversViewModel @Inject constructor(
                     }.distinctBy { it.name }
                 }
             }
-            is Resource.Error -> events.emit(Event.FetchingErrorEvent)
+            is Resource.Error -> events.emit(HistoryViewModel.Event.FetchingErrorEvent)
             else -> {}
         }
     }
 
-
-    sealed class Event {
-        object FetchingErrorEvent : Event()
-        class DriverClickEvent(val item: DriverItem, val position: Int) : Event()
-    }
 }

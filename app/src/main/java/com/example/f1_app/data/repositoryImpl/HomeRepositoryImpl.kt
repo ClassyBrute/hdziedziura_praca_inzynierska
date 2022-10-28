@@ -36,4 +36,19 @@ class HomeRepositoryImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             return@withContext api.constructorStandings()
         }
+
+    override suspend fun driverStandingsSeason(season: String): Response<DriverStandingsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.driverStandingsSeason(season)
+        }
+
+    override suspend fun constructorStandingsSeason(season: String): Response<ConstructorStandingsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.constructorStandingsSeason(season)
+        }
+
+    override suspend fun racesSeason(season: String): Response<NextRacesDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.racesSeason(season)
+        }
 }
