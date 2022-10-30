@@ -19,6 +19,7 @@ class HistoryViewModel @Inject constructor(
     private val events = MutableSharedFlow<Event>()
     val adapter: ObservableField<ViewPagerAdapter> = ObservableField()
     val uiEvents: SharedFlow<Event> = events
+    val season: ObservableField<String> = ObservableField("2022")
 
     fun emitInnerEvents(event: Event) {
         viewModelScope.launch {

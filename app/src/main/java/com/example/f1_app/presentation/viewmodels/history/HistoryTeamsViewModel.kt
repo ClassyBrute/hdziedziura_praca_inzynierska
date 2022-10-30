@@ -1,5 +1,6 @@
 package com.example.f1_app.presentation.viewmodels.history
 
+import androidx.databinding.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -24,6 +25,7 @@ class HistoryTeamsViewModel @Inject constructor(
     val uiEvents: SharedFlow<HistoryViewModel.Event> = events
     val data: ObservableField<List<RecyclerViewItem>> = ObservableField(emptyList())
     private var constructorStandingsList: List<ConstructorItem> = mutableListOf()
+    val season: ObservableField<String> = ObservableField("")
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
@@ -32,6 +34,18 @@ class HistoryTeamsViewModel @Inject constructor(
         }.invokeOnCompletion {
             createRecyclerItems()
         }
+    }
+
+    init {
+        season.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                viewModelScope.launch {
+                    fetchConstructors()
+                }.invokeOnCompletion {
+                    createRecyclerItems()
+                }
+            }
+        })
     }
 
     private fun createRecyclerItems() {
@@ -54,7 +68,7 @@ class HistoryTeamsViewModel @Inject constructor(
     }
 
     private suspend fun fetchConstructors() {
-        when (val result = constructorStandingsSeasonUseCase.execute("2021")) {
+        when (val result = constructorStandingsSeasonUseCase.execute(season.get()?.takeLast(4)!!)) {
             is Resource.Success -> {
                 result.data?.apply {
                     constructorStandingsList = this.map { constr ->

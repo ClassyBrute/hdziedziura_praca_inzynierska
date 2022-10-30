@@ -1,5 +1,6 @@
 package com.example.f1_app.presentation.viewmodels.history
 
+import androidx.databinding.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -26,6 +27,7 @@ class HistoryScheduleViewModel @Inject constructor(
     val uiEvents: SharedFlow<HistoryViewModel.Event> = events
     val data: ObservableField<List<RecyclerViewItem>> = ObservableField(emptyList())
     private var racesList: List<RaceItem> = mutableListOf()
+    val season: ObservableField<String> = ObservableField("")
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
@@ -34,6 +36,18 @@ class HistoryScheduleViewModel @Inject constructor(
         }.invokeOnCompletion {
             createRecyclerItems()
         }
+    }
+
+    init {
+        season.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                viewModelScope.launch {
+                    fetchRaces()
+                }.invokeOnCompletion {
+                    createRecyclerItems()
+                }
+            }
+        })
     }
 
     private fun createRecyclerItems() {
@@ -57,14 +71,14 @@ class HistoryScheduleViewModel @Inject constructor(
 
     private suspend fun fetchRaces() {
         val format = SimpleDateFormat("yyyy-MM-dd")
-        when (val result = racesSeasonUseCase.execute("2021")) {
+        when (val result = racesSeasonUseCase.execute(season.get()?.takeLast(4)!!)) {
             is Resource.Success -> {
                 result.data?.apply {
                     racesList = this.map {
                         RaceItem(
                             round = it.round,
                             country = it.name,
-                            dateFrom = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateFrom)!!),
+                            dateFrom = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateTo)!!),
                             image = it.image,
                             raceName = it.raceName
                         )

@@ -16,4 +16,56 @@
     <item
         android:id="@+id/season_2019"
         android:title="2019"/>
+
+    <item
+        android:id="@+id/season_2018"
+        android:title="2018"/>
+
+    <item
+        android:id="@+id/season_2017"
+        android:title="2017"/>
+
+    <item
+        android:id="@+id/season_2016"
+        android:title="2016"/>
+
+    <item
+        android:id="@+id/season_2015"
+        android:title="2015"/>
+
+    <item
+        android:id="@+id/season_2014"
+        android:title="2014"/>
+
+    <item
+        android:id="@+id/season_2013"
+        android:title="2013"/>
+
+    <item
+        android:id="@+id/season_2012"
+        android:title="2012"/>
+
+    <item
+        android:id="@+id/season_2011"
+        android:title="2011"/>
+
+    <item
+        android:id="@+id/season_2010"
+        android:title="2010"/>
+
+    <item
+        android:id="@+id/season_2009"
+        android:title="2009"/>
+
+    <item
+        android:id="@+id/season_2008"
+        android:title="2008"/>
+
+    <item
+        android:id="@+id/season_2007"
+        android:title="2007"/>
+
+    <item
+        android:id="@+id/season_2006"
+        android:title="2006"/>
 </menu>

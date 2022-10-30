@@ -1,10 +1,7 @@
 package com.example.f1_app.presentation.ui
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
-import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
@@ -78,16 +75,6 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                 View.VISIBLE
             } else {
                 View.GONE
-            }
-
-            binding.toolbarSeason.setOnClickListener {
-                val popup = PopupMenu(context, it)
-                popup.menuInflater.inflate(R.menu.season_menu, popup.menu)
-                popup.setOnMenuItemClickListener { menuItem: MenuItem ->
-                    Toast.makeText(context, menuItem.title, Toast.LENGTH_SHORT).show()
-                    true
-                }
-                popup.show()
             }
         }
     }
