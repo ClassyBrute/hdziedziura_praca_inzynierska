@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.f1_app.presentation.viewmodels.driverDetails.DriverDetailsInformationViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/info_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_birth"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="16/10/1997"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="@{vm.driverDetails.dateOfBirth}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nationality"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Spanish"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="@{vm.driverDetails.nationality}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_wdc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/world_championships"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_wdc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text='@{vm.driverStats.get("wdc").toString()}'/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/stats_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/stats_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_wins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wins"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/text_wins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="8"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text='@{vm.driverStats.get("wins").toString()}'/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/stats_inner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_gp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/grand_prix"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/text_gp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="118"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text="@{vm.driverRaces}"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/stats_inner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/points"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/text_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="778"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text='@{vm.driverStats.get("points").toString()}'/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

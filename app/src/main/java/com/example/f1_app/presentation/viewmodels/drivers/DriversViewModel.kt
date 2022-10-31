@@ -60,6 +60,7 @@ class DriversViewModel @Inject constructor(
                 result.data?.apply {
                     driverStandingsList = this.map {
                         DriverItem(
+                            driverId = it.driverId,
                             name = "${it.driverName} ${it.driverSurname.uppercase()}",
                             surname = it.driverSurname.uppercase(),
                             team = it.constructorName,

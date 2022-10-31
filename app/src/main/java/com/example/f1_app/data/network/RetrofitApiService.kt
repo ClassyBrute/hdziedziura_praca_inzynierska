@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface RetrofitApiService {
 
-    @GET("2022/drivers/{driverId}.json")
+    @GET("drivers/{driverId}.json")
     suspend fun driverDetails(@Path("driverId") driverId: String): Response<DriverDetailsDto>
 
     @GET("current/last/results.json")
@@ -30,4 +30,10 @@ interface RetrofitApiService {
 
     @GET("{season}.json")
     suspend fun racesSeason(@Path("season") season: String): Response<NextRacesDto>
+
+    @GET("drivers/{driverId}/driverStandings.json")
+    suspend fun statsAllTime(@Path("driverId") driverId: String): Response<DriverStandingsDto>
+
+    @GET("drivers/{driverId}/status.json")
+    suspend fun racesAllTime(@Path("driverId") driverId: String): Response<RacesAllTimeDto>
 }

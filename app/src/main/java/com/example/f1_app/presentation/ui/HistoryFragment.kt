@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentHistoryBinding
 import com.example.f1_app.presentation.ext.viewModels
@@ -76,9 +78,13 @@ class HistoryFragment : BaseFragment() {
                             is HistoryViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
                             ).show()
-                            is HistoryViewModel.Event.DriverClickEvent -> Toast.makeText(
-                                context, "Driver ${it.item.name} click", Toast.LENGTH_SHORT
-                            ).show()
+                            is HistoryViewModel.Event.DriverClickEvent -> {
+                                val bundle = bundleOf("driverId" to it.item.driverId)
+                                findNavController().navigate(
+                                    R.id.action_historyFragment_to_driverDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is HistoryViewModel.Event.ConstructorClickEvent -> Toast.makeText(
                                 context, "Team ${it.item.name} click", Toast.LENGTH_SHORT
                             ).show()

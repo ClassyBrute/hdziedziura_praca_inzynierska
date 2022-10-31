@@ -16,12 +16,4 @@ internal interface AppModule {
 
     @Binds
     fun bindViewModelFactory(factory: AppViewModelFactory): ViewModelProvider.Factory
-
-//    companion object {
-//        @JvmStatic
-//        @Provides
-//        fun provideDataStore(application: Application): DataStoreManager {
-//            return DataStoreManagerImpl(application.applicationContext)
-//        }
-//    }
 }

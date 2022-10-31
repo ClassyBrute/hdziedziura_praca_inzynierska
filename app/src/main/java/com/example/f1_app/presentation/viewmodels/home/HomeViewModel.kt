@@ -171,6 +171,7 @@ class HomeViewModel @Inject constructor(
                 result.data?.apply {
                     latestList = this.map {
                         DriverItem(
+                            driverId = it.driverId,
                             name = "${it.driverName}\n${it.driverSurname}",
                             position = it.position,
                             team = it.constructor,
@@ -213,6 +214,7 @@ class HomeViewModel @Inject constructor(
                 result.data?.apply {
                     driverStandingsList = this.map {
                         DriverItem(
+                            driverId = it.driverId,
                             name = "${it.driverName} ${it.driverSurname.uppercase()}",
                             surname = it.driverSurname.uppercase(),
                             team = it.constructorName,

@@ -15,4 +15,12 @@
     <string name="error_fetching">Fetching error</string>
     <string name="full_standings"><u>Show full standings</u></string>
     <string name="season">Season %1$s</string>
+    <string name="title_information">Information</string>
+    <string name="title_results">Results</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="nationality">Nationality</string>
+    <string name="world_championships">World Championships</string>
+    <string name="wins">Wins</string>
+    <string name="grand_prix">Grand Prix</string>
+    <string name="points">Points</string>
 </resources>

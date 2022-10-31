@@ -9,6 +9,7 @@ fun LatestResultsDto.toResults() =
     }
 
 fun LatestResultsDto.ResultDto.toResults(name: String, round: String) = Results(
+    Driver.driverId,
     name,
     round,
     number,

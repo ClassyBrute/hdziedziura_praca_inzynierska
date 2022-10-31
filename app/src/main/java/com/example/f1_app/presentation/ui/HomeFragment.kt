@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -48,9 +49,13 @@ class HomeFragment : BaseFragment() {
                             is HomeViewModel.Event.NavigateToStart ->
                                 findNavController().navigate(R.id.action_home_start)
 
-                            is HomeViewModel.Event.DriverClickEvent -> Toast.makeText(
-                                context, "Driver click ${it.item.name}", Toast.LENGTH_SHORT
-                            ).show()
+                            is HomeViewModel.Event.DriverClickEvent -> {
+                                val bundle = bundleOf("driverId" to it.item.driverId)
+                                findNavController().navigate(
+                                    R.id.action_homeFragment_to_driverDetailsFragment,
+                                    bundle
+                                )
+                            }
 
                             is HomeViewModel.Event.CarouselClickEvent -> Toast.makeText(
                                 context, "Race click ${it.item.title}", Toast.LENGTH_SHORT

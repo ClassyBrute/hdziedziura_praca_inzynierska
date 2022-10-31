@@ -5,28 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
-import com.example.f1_app.databinding.FragmentDriversBinding
+import com.example.f1_app.databinding.FragmentDriverDetailsBinding
 import com.example.f1_app.presentation.ext.viewModels
-import com.example.f1_app.presentation.viewmodels.drivers.DriversViewModel
+import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapterDriver
+import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapterHistory
+import com.example.f1_app.presentation.viewmodels.driverDetails.DriverDetailsViewModel
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 
-class DriversFragment : BaseFragment() {
+class DriverDetailsFragment : BaseFragment() {
 
-    private val viewModel: DriversViewModel by viewModels()
-    private lateinit var binding: FragmentDriversBinding
+    private val viewModel: DriverDetailsViewModel by viewModels()
+    private lateinit var binding: FragmentDriverDetailsBinding
     override val showToolbar: Boolean
         get() = true
     override val showBottomNavBar: Boolean
         get() = true
     override val toolbarTitle: String
-        get() = "Drivers Standings"
+        get() = "Driver Details"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,24 +36,28 @@ class DriversFragment : BaseFragment() {
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_drivers, container, false
+            inflater, R.layout.fragment_driver_details, container, false
         )
 
         lifecycle.addObserver(viewModel)
+
+        viewModel.driverId = arguments?.getString("driverId").toString()
+
+        val adapter = ViewPagerAdapterDriver(this, 2)
+        binding.viewpager2.adapter = adapter
+        TabLayoutMediator(binding.tabs, binding.viewpager2) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.title_information)
+                1 -> tab.text = getString(R.string.title_results)
+            }
+        }.attach()
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiEvents.collect {
                         when (it) {
-                            is DriversViewModel.Event.DriverClickEvent -> {
-                                val bundle = bundleOf("driverId" to it.item.driverId)
-                                findNavController().navigate(
-                                    R.id.action_driversFragment_to_driverDetailsFragment,
-                                    bundle
-                                )
-                            }
-                            is DriversViewModel.Event.FetchingErrorEvent -> Toast.makeText(
+                            is DriverDetailsViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
                             ).show()
                         }

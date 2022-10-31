@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.f1_app.presentation.viewmodels.driverDetails.DriverDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Charles\nLeclerc"
+            android:text="@{vm.driverDetails.driverName+'\n'+vm.driverDetails.driverSurname}"
+            android:textSize="30sp"
+            android:layout_margin="16dp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintBottom_toBottomOf="@+id/image"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            imageUrl="@{vm.driverDetails.image}"
+            android:src="@drawable/charlesleclerc"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorColor="@color/red"
+            app:tabTextColor="@color/white"
+            app:tabIndicatorHeight="3dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager2"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabs"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -51,4 +51,14 @@ class HomeRepositoryImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             return@withContext api.racesSeason(season)
         }
+
+    override suspend fun statsAllTime(driverId: String): Response<DriverStandingsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.statsAllTime(driverId)
+        }
+
+    override suspend fun racesAllTime(driverId: String): Response<RacesAllTimeDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.racesAllTime(driverId)
+        }
 }

@@ -25,7 +25,10 @@ import dagger.multibindings.IntoMap
         HistoryFragmentModule::class,
         HistoryDriversFragmentModule::class,
         HistoryTeamsFragmentModule::class,
-        HistoryScheduleFragmentModule::class
+        HistoryScheduleFragmentModule::class,
+        DriverDetailsFragmentModule::class,
+        DriverDetailsInformationFragmentModule::class,
+        DriverDetailsResultsFragmentModule::class
     ]
 )
 interface ActivityModule {

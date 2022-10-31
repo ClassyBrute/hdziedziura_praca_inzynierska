@@ -12,4 +12,6 @@ interface HomeRepository {
     suspend fun driverStandingsSeason(season: String): Response<DriverStandingsDto>
     suspend fun constructorStandingsSeason(season: String): Response<ConstructorStandingsDto>
     suspend fun racesSeason(season: String): Response<NextRacesDto>
+    suspend fun statsAllTime(driverId: String): Response<DriverStandingsDto>
+    suspend fun racesAllTime(driverId: String): Response<RacesAllTimeDto>
 }

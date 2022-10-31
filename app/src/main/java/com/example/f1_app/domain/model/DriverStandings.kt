@@ -4,6 +4,7 @@ import com.example.f1_app.R
 import com.example.f1_app.data.mocks.mockDrivers
 
 data class DriverStandings(
+    val driverId: String = "",
     val position: String = "",
     val points: String = "",
     val wins: String = "",

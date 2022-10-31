@@ -1,6 +1,7 @@
 package com.example.f1_app.presentation.homeRvItems
 
 data class DriverItem(
+    val driverId: String = "",
     val name: String = "",
     val surname: String = "",
     val position: String = "",

@@ -6,6 +6,7 @@ import com.example.f1_app.domain.model.DriverStandings
 fun DriverStandingsDto.toDriverStandings() =
     MRData.StandingsTable.StandingsLists[0].DriverStandings.map {
         DriverStandings(
+            it.Driver.driverId,
             it.position,
             it.points,
             it.wins,
