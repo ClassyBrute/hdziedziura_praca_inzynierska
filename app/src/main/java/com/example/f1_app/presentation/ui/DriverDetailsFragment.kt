@@ -13,7 +13,6 @@ import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentDriverDetailsBinding
 import com.example.f1_app.presentation.ext.viewModels
 import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapterDriver
-import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapterHistory
 import com.example.f1_app.presentation.viewmodels.driverDetails.DriverDetailsViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
@@ -59,6 +58,12 @@ class DriverDetailsFragment : BaseFragment() {
                         when (it) {
                             is DriverDetailsViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
+                            ).show()
+                            is DriverDetailsViewModel.Event.RaceClickEvent -> Toast.makeText(
+                                context, "Race ${it.item.country} click", Toast.LENGTH_SHORT
+                            ).show()
+                            is DriverDetailsViewModel.Event.EmptyResults -> Toast.makeText(
+                                context, "Driver had not raced this season", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

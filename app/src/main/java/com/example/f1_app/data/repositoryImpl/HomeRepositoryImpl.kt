@@ -61,4 +61,9 @@ class HomeRepositoryImpl @Inject constructor(
         withContext(Dispatchers.IO) {
             return@withContext api.racesAllTime(driverId)
         }
+
+    override suspend fun driverResultsSeason(season: String, driverId: String): Response<LatestResultsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.driverResultsSeason(season, driverId)
+        }
 }

@@ -36,4 +36,7 @@ interface RetrofitApiService {
 
     @GET("drivers/{driverId}/status.json")
     suspend fun racesAllTime(@Path("driverId") driverId: String): Response<RacesAllTimeDto>
+
+    @GET("{season}/drivers/{driverId}/results.json")
+    suspend fun driverResultsSeason(@Path("season") season: String, @Path("driverId") driverId: String): Response<LatestResultsDto>
 }

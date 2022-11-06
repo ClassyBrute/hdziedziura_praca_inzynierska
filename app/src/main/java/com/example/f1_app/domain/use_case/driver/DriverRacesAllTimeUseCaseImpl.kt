@@ -2,7 +2,6 @@ package com.example.f1_app.domain.use_case.driver
 
 import com.example.f1_app.common.Resource
 import com.example.f1_app.data.toRacesAllTime
-import com.example.f1_app.domain.model.RacesAllTime
 import com.example.f1_app.domain.repository.HomeRepository
 import kotlinx.coroutines.coroutineScope
 import java.io.IOException

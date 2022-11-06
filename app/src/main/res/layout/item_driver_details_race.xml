@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemVM"
+            type="com.example.f1_app.presentation.viewmodels.driverDetails.item_vm.RaceVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/race_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="@{() -> itemVM.onRaceClick()}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Round "+itemVM.item.round}'
+            android:textSize="14sp"
+            android:textColor="@color/red"
+            tools:text="Round 5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.country}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:text="Spain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/constructor"
+            app:layout_constraintTop_toBottomOf="@id/round"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/constructor"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.constructor}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="100dp"
+            tools:text="Ferrari"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/round"
+            app:layout_constraintBottom_toBottomOf="@id/name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Position: "+itemVM.item.position}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="Position: 2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/points"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.points+" pts"}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="18 pts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/position"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,11 +6,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.f1_app.common.Resource
-import com.example.f1_app.domain.model.Driver
 import com.example.f1_app.domain.model.DriverStandings
 import com.example.f1_app.domain.use_case.driver.DriverDetailsUseCase
+import com.example.f1_app.presentation.homeRvItems.DriverResultsRaceItem
 import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapter
-import com.example.f1_app.presentation.viewmodels.history.HistoryViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
@@ -57,5 +56,7 @@ class DriverDetailsViewModel @Inject constructor(
 
     sealed class Event {
         object FetchingErrorEvent : Event()
+        object EmptyResults : Event()
+        class RaceClickEvent(val item: DriverResultsRaceItem, val position: Int) : Event()
     }
 }

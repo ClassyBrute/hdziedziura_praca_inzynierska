@@ -14,4 +14,5 @@ interface HomeRepository {
     suspend fun racesSeason(season: String): Response<NextRacesDto>
     suspend fun statsAllTime(driverId: String): Response<DriverStandingsDto>
     suspend fun racesAllTime(driverId: String): Response<RacesAllTimeDto>
+    suspend fun driverResultsSeason(season: String, driverId: String): Response<LatestResultsDto>
 }

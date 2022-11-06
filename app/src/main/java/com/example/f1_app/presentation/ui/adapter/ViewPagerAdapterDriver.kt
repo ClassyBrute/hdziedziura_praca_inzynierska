@@ -2,7 +2,9 @@ package com.example.f1_app.presentation.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.f1_app.presentation.ui.*
+import com.example.f1_app.presentation.ui.DriverDetailsFragment
+import com.example.f1_app.presentation.ui.DriverDetailsInformationFragment
+import com.example.f1_app.presentation.ui.DriverDetailsResultsFragment
 
 class ViewPagerAdapterDriver(
 parentFragment: DriverDetailsFragment, private var totalCount: Int

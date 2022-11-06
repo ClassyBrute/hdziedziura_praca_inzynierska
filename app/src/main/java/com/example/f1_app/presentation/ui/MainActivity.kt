@@ -54,7 +54,15 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.scheduleFragment))
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment,
+                R.id.scheduleFragment,
+                R.id.driversFragment,
+                R.id.teamFragment,
+                R.id.historyFragment
+            )
+        )
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
         binding.bottomNavigation.setupWithNavController(navController)
