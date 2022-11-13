@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="itemVM"
+            type="com.example.f1_app.presentation.viewmodels.teamDetails.item_vm.RaceVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/race_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:onClick="@{() -> itemVM.onRaceClick()}">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Round "+itemVM.item.round}'
+            android:textSize="14sp"
+            android:textColor="@color/red"
+            tools:text="Round 5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{itemVM.item.country}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:text="Spain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/driver1"
+            app:layout_constraintTop_toBottomOf="@id/round"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/driver1"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{itemVM.item.driver1}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            tools:text="Charles Leclerc"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/position1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Position: "+itemVM.item.position1}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="Position: 2"
+            android:layout_marginEnd="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/driver1"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/points1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.points1+" pts"}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="18 pts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/driver1"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/driver2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{itemVM.item.driver1}"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            tools:text="Carlos Sainz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/driver1"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/position2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{"Position: "+itemVM.item.position2}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="Position: 1"
+            android:layout_marginEnd="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/driver2"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/points2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{itemVM.item.points2+" pts"}'
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            tools:text="25 pts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/position2"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

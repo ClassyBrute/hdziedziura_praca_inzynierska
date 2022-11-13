@@ -17,5 +17,9 @@
         <action android:id="@+id/action_homeFragment_to_driverDetailsFragment"
             app:destination="@id/navigation_driver_details"
             app:popUpTo="@id/homeFragment"/>
+
+        <action android:id="@+id/action_homeFragment_to_teamDetailsFragment"
+            app:destination="@id/navigation_team_details"
+            app:popUpTo="@id/homeFragment"/>
     </fragment>
 </navigation>

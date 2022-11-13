@@ -23,4 +23,6 @@
     <string name="wins">Wins</string>
     <string name="grand_prix">Grand Prix</string>
     <string name="points">Points</string>
+    <string name="team_name">Team Name</string>
+    <string name="first_race">First Race</string>
 </resources>

@@ -8,5 +8,10 @@
     <fragment
         android:id="@+id/teamFragment"
         android:name="com.example.f1_app.presentation.ui.TeamsFragment"
-        tools:layout="@layout/fragment_teams"/>
+        tools:layout="@layout/fragment_teams">
+
+        <action android:id="@+id/action_teamFragment_to_teamDetailsFragment"
+            app:destination="@id/navigation_team_details"
+            app:popUpTo="@id/teamFragment"/>
+    </fragment>
 </navigation>

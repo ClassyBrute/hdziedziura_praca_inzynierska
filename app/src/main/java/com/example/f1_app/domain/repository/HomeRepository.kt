@@ -5,6 +5,7 @@ import retrofit2.Response
 
 interface HomeRepository {
     suspend fun driverDetails(driverId: String): Response<DriverDetailsDto>
+    suspend fun constructorDetails(constructorId: String): Response<ConstructorDetailsDto>
     suspend fun nextRace(): Response<NextRacesDto>
     suspend fun latestResults(): Response<LatestResultsDto>
     suspend fun driverStandings(): Response<DriverStandingsDto>
@@ -15,4 +16,6 @@ interface HomeRepository {
     suspend fun statsAllTime(driverId: String): Response<DriverStandingsDto>
     suspend fun racesAllTime(driverId: String): Response<RacesAllTimeDto>
     suspend fun driverResultsSeason(season: String, driverId: String): Response<LatestResultsDto>
+    suspend fun constructorStats(constructorId: String): Response<ConstructorStandingsDto>
+    suspend fun firstRace(constructorId: String): Response<SeasonsDto>
 }

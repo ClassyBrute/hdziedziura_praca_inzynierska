@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.f1_app.presentation.viewmodels.teamDetails.TeamDetailsInformationViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/info_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/team_name"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Ferrari"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="@{vm.teamDetails.name}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_drivers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_drivers"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_drivers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Charles Leclerc\nCarlos Sainz"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text='@{vm.driver1+"\n"+vm.driver2}'/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nationality"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_nationality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Italian"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="@{vm.teamDetails.nationality}"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_wdc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/world_championships"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/text_wdc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="N/A"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text='@{vm.teamStats.get("wcc").toString()}'/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/stats_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/stats_inner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_wins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wins"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/text_wins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="8"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text='@{vm.teamStats.get("wins").toString()}'/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/stats_inner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_first_race"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/first_race"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/text_first_race"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="1950"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:text="@{vm.teamRace.date}"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

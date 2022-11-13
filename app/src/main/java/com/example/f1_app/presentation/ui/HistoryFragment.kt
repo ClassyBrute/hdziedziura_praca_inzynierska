@@ -85,9 +85,16 @@ class HistoryFragment : BaseFragment() {
                                     bundle
                                 )
                             }
-                            is HistoryViewModel.Event.ConstructorClickEvent -> Toast.makeText(
-                                context, "Team ${it.item.name} click", Toast.LENGTH_SHORT
-                            ).show()
+                            is HistoryViewModel.Event.ConstructorClickEvent -> {
+                                val bundle = bundleOf(
+                                    "teamId" to it.item.id,
+                                    "season" to viewModel.season.get()?.takeLast(4)
+                                )
+                                findNavController().navigate(
+                                    R.id.action_historyFragment_to_teamDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is HistoryViewModel.Event.RaceClickEvent -> Toast.makeText(
                                 context, "Race ${it.item.country} click", Toast.LENGTH_SHORT
                             ).show()

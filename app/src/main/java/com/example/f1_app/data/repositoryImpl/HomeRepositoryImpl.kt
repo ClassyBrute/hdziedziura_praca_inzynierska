@@ -17,6 +17,11 @@ class HomeRepositoryImpl @Inject constructor(
             return@withContext api.driverDetails(driverId)
         }
 
+    override suspend fun constructorDetails(constructorId: String): Response<ConstructorDetailsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.constructorDetails(constructorId)
+        }
+
     override suspend fun nextRace(): Response<NextRacesDto> =
         withContext(Dispatchers.IO) {
             return@withContext api.nextRaces()
@@ -65,5 +70,15 @@ class HomeRepositoryImpl @Inject constructor(
     override suspend fun driverResultsSeason(season: String, driverId: String): Response<LatestResultsDto> =
         withContext(Dispatchers.IO) {
             return@withContext api.driverResultsSeason(season, driverId)
+        }
+
+    override suspend fun constructorStats(constructorId: String): Response<ConstructorStandingsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.constructorStats(constructorId)
+        }
+
+    override suspend fun firstRace(constructorId: String): Response<SeasonsDto> =
+        withContext(Dispatchers.IO) {
+            return@withContext api.firstRace(constructorId)
         }
 }

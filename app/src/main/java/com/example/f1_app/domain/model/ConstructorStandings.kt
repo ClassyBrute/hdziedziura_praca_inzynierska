@@ -4,6 +4,7 @@ import com.example.f1_app.R
 import com.example.f1_app.data.mocks.mockTeams
 
 data class ConstructorStandings (
+    val id: String = "",
     val position: String = "",
     val constructorName: String = "",
     val points: String = "",

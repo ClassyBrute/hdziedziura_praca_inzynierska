@@ -65,9 +65,16 @@ class HomeFragment : BaseFragment() {
                                 context, "Race click ${it.item.country}", Toast.LENGTH_SHORT
                             ).show()
 
-                            is HomeViewModel.Event.ConstructorClickEvent -> Toast.makeText(
-                                context, "Constructor click ${it.item.name}", Toast.LENGTH_SHORT
-                            ).show()
+                            is HomeViewModel.Event.ConstructorClickEvent -> {
+                                val bundle = bundleOf(
+                                    "teamId" to it.item.id,
+                                    "season" to "current"
+                                )
+                                findNavController().navigate(
+                                    R.id.action_homeFragment_to_teamDetailsFragment,
+                                    bundle
+                                )
+                            }
 
                             is HomeViewModel.Event.ShowDriversEvent -> {
                                 viewModel.data.set(viewModel.newList)

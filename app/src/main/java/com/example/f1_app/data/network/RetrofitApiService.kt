@@ -10,6 +10,9 @@ interface RetrofitApiService {
     @GET("drivers/{driverId}.json")
     suspend fun driverDetails(@Path("driverId") driverId: String): Response<DriverDetailsDto>
 
+    @GET("constructors/{constructorId}.json")
+    suspend fun constructorDetails(@Path("constructorId") constructorId: String): Response<ConstructorDetailsDto>
+
     @GET("current/last/results.json")
     suspend fun latestResults(): Response<LatestResultsDto>
 
@@ -39,4 +42,10 @@ interface RetrofitApiService {
 
     @GET("{season}/drivers/{driverId}/results.json")
     suspend fun driverResultsSeason(@Path("season") season: String, @Path("driverId") driverId: String): Response<LatestResultsDto>
+
+    @GET("constructors/{constructorId}/constructorStandings.json?limit=100")
+    suspend fun constructorStats(@Path("constructorId") constructorId: String): Response<ConstructorStandingsDto>
+
+    @GET("constructors/{constructorId}/seasons.json?limit=1")
+    suspend fun firstRace(@Path("constructorId") constructorId: String): Response<SeasonsDto>
 }

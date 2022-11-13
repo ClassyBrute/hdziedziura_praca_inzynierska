@@ -86,6 +86,7 @@ class TeamsViewModel @Inject constructor(
                 result.data?.apply {
                     constructorStandingsList = this.map { constr ->
                         ConstructorItem(
+                            id = constr.id,
                             name = constr.constructorName,
                             position = constr.position,
                             points = constr.points,

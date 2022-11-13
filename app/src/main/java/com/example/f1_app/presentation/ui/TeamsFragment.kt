@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentTeamsBinding
 import com.example.f1_app.presentation.ext.viewModels
@@ -43,9 +45,16 @@ class TeamsFragment : BaseFragment() {
                 launch {
                     viewModel.uiEvents.collect {
                         when (it) {
-                            is TeamsViewModel.Event.ConstructorClickEvent -> Toast.makeText(
-                                context, "Team ${it.item.name} clicked", Toast.LENGTH_SHORT
-                            ).show()
+                            is TeamsViewModel.Event.ConstructorClickEvent -> {
+                                val bundle = bundleOf(
+                                    "teamId" to it.item.id,
+                                    "season" to "current"
+                                )
+                                findNavController().navigate(
+                                    R.id.action_teamFragment_to_teamDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is TeamsViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
                             ).show()

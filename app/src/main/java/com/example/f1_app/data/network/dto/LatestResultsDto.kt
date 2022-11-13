@@ -70,7 +70,7 @@ data class LatestResultsDto(
     )
 
     data class ConstructorDto (
-        val constructorID: String = "",
+        val constructorId: String = "",
         val url: String = "",
         val name: String = "",
         val nationality: String = ""

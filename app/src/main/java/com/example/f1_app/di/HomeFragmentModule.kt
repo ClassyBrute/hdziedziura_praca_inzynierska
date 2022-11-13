@@ -3,6 +3,8 @@ package com.example.f1_app.di
 import androidx.lifecycle.ViewModel
 import com.example.f1_app.di.scope.FragmentScope
 import com.example.f1_app.di.scope.ViewModelKey
+import com.example.f1_app.domain.use_case.constructor.ConstructorDetailsUseCase
+import com.example.f1_app.domain.use_case.constructor.ConstructorDetailsUseCaseImpl
 import com.example.f1_app.domain.use_case.driver.DriverDetailsUseCase
 import com.example.f1_app.domain.use_case.driver.DriverDetailsUseCaseImpl
 import com.example.f1_app.domain.use_case.next_race.NextRaceUseCase
@@ -27,6 +29,7 @@ interface HomeFragmentModule {
             HomeRepoModule::class,
             HomeViewModelModule::class,
             DriverDetailsUseCaseModule::class,
+            ConstructorDetailsUseCaseModule::class,
             ResultsLatestUseCaseModule::class,
             NextRaceUseCaseModule::class,
             DriverStandingsUseCaseModule::class,
@@ -50,6 +53,12 @@ internal interface HomeViewModelModule {
 internal interface DriverDetailsUseCaseModule {
     @Binds
     fun bindDriverDetailsUseCase(driverDetailsUseCase: DriverDetailsUseCaseImpl): DriverDetailsUseCase
+}
+
+@Module
+internal interface ConstructorDetailsUseCaseModule {
+    @Binds
+    fun bindConstructorDetailsUseCase(constructorDetailsUseCase: ConstructorDetailsUseCaseImpl): ConstructorDetailsUseCase
 }
 
 @Module

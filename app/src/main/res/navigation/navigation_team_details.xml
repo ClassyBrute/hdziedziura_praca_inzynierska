@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_team_details"
+    app:startDestination="@id/teamDetailsFragment">
+
+    <fragment
+        android:id="@+id/teamDetailsFragment"
+        android:name="com.example.f1_app.presentation.ui.TeamDetailsFragment"
+        tools:layout="@layout/fragment_team_details"/>
+</navigation>
