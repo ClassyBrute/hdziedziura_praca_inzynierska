@@ -1,10 +1,7 @@
 package com.example.f1_app.presentation.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
@@ -35,16 +32,18 @@ class TeamDetailsResultsFragment : BaseFragment() {
         lifecycle.addObserver(viewModel)
 
         viewModel.teamId = parentViewModel.teamId
+        viewModel.teamName = parentViewModel.teamDetails.get()?.name.toString()
 
         binding.seasonChoice.setOnClickListener {
-            val popup = PopupMenu(context, it)
+            val popup = PopupMenu(context, it, Gravity.BOTTOM)
             popup.menuInflater.inflate(R.menu.season_menu, popup.menu)
             popup.setOnMenuItemClickListener { menuItem: MenuItem ->
                 viewModel.season.set(menuItem.title.toString())
                 binding.seasonChoice.text = menuItem.title
 
                 viewLifecycleOwner.lifecycleScope.launch {
-                    viewModel.fetchDriverResults()
+                    viewModel.fetchDriverStandings()
+                    viewModel.fetchDriversResults(viewModel.driverIds)
                 }.invokeOnCompletion {
                     viewModel.createRecyclerItems()
                 }
@@ -58,7 +57,7 @@ class TeamDetailsResultsFragment : BaseFragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.uiEvents.collect {
-//                        parentViewModel.emitInnerEvents(it)
+                        parentViewModel.emitInnerEvents(it)
                     }
                 }
             }

@@ -64,7 +64,7 @@ class TeamDetailsFragment : BaseFragment() {
                                 context, "Race ${it.item.country} click", Toast.LENGTH_SHORT
                             ).show()
                             is TeamDetailsViewModel.Event.EmptyResults -> Toast.makeText(
-                                context, "Driver had not raced this season", Toast.LENGTH_SHORT
+                                context, "Team had not raced this season", Toast.LENGTH_SHORT
                             ).show()
                         }
                     }

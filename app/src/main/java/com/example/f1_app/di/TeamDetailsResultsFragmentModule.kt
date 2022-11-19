@@ -15,6 +15,8 @@ interface TeamDetailsResultsFragmentModule {
     @ContributesAndroidInjector(
         modules = [
             TeamDetailsResultsViewModelModule::class,
+            DriverResultsSeasonUseCaseModule::class,
+            DriverStandingsSeasonUseCaseModule::class,
             HomeRepoModule::class,
         ]
     )

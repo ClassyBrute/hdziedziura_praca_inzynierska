@@ -13,5 +13,6 @@ fun LatestResultsDto.toResultsSeason() =
             it.Results[0].Constructor.name,
             it.Results[0].position,
             it.Results[0].points,
+            it.Results[0].Driver.givenName+" "+it.Results[0].Driver.familyName
         )
     }

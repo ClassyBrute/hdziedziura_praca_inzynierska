@@ -1,10 +1,7 @@
 package com.example.f1_app.presentation.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
@@ -59,7 +56,7 @@ class HistoryFragment : BaseFragment() {
 
         viewModel.season.set((activity as MainActivity).findViewById<AppCompatTextView>(R.id.toolbar_season).text.toString())
         (activity as MainActivity).findViewById<AppCompatTextView>(R.id.toolbar_season).setOnClickListener {
-            val popup = PopupMenu(context, it)
+            val popup = PopupMenu(context, it, Gravity.BOTTOM)
             popup.menuInflater.inflate(R.menu.season_menu, popup.menu)
             popup.setOnMenuItemClickListener { menuItem: MenuItem ->
                 viewModel.season.set(getString(R.string.season, menuItem.title))

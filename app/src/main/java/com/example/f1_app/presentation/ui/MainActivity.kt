@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -64,6 +65,31 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             )
         )
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+
+        binding.bottomNavigation.setOnItemReselectedListener {
+            when (it) {
+                binding.bottomNavigation.menu[0] -> {
+                    if (navController.currentDestination?.id != R.id.homeFragment)
+                        navController.popBackStack()
+                }
+                binding.bottomNavigation.menu[1] -> {
+//                    if (navController.currentDestination?.id == R.id.shopProductListFragment)
+//                        navController.popBackStack()
+                }
+                binding.bottomNavigation.menu[2] -> {
+                    if (navController.currentDestination?.id != R.id.driversFragment)
+                        navController.popBackStack()
+                }
+                binding.bottomNavigation.menu[3] -> {
+                    if (navController.currentDestination?.id != R.id.teamFragment)
+                        navController.popBackStack()
+                }
+                binding.bottomNavigation.menu[4] -> {
+                    if (navController.currentDestination?.id != R.id.historyFragment)
+                        navController.popBackStack()
+                }
+            }
+        }
 
         binding.bottomNavigation.setupWithNavController(navController)
     }

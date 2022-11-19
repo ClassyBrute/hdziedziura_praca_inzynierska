@@ -62,9 +62,9 @@
             android:text='@{"Position: "+itemVM.item.position1}'
             android:textSize="14sp"
             android:textColor="@color/white"
-            tools:text="Position: 2"
-            android:layout_marginEnd="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Position: 20"
+            android:layout_marginStart="200dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/driver1"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -83,7 +83,7 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{itemVM.item.driver1}"
+            android:text="@{itemVM.item.driver2}"
             android:textSize="16sp"
             android:textColor="@color/white"
             tools:text="Carlos Sainz"
@@ -98,8 +98,8 @@
             android:textSize="14sp"
             android:textColor="@color/white"
             tools:text="Position: 1"
-            android:layout_marginEnd="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="200dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/driver2"/>
 
         <androidx.appcompat.widget.AppCompatTextView

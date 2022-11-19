@@ -8,16 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.example.f1_app.common.Resource
 import com.example.f1_app.domain.model.Constructor
 import com.example.f1_app.domain.model.ConstructorRace
-import com.example.f1_app.domain.model.Driver
 import com.example.f1_app.domain.use_case.constructor.ConstructorDetailsUseCase
 import com.example.f1_app.domain.use_case.constructor.ConstructorFirstRaceUseCase
 import com.example.f1_app.domain.use_case.constructor.ConstructorStatsUseCase
 import com.example.f1_app.domain.use_case.standings.DriverStandingsSeasonUseCase
-import com.example.f1_app.domain.use_case.standings.DriverStandingsUseCase
-import com.example.f1_app.presentation.homeRvItems.ConstructorItem
 import com.example.f1_app.presentation.homeRvItems.DriverItem
-import com.example.f1_app.presentation.viewmodels.driverDetails.DriverDetailsViewModel
-import com.example.f1_app.presentation.viewmodels.teams.TeamsViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
@@ -57,7 +52,8 @@ class TeamDetailsInformationViewModel @Inject constructor(
                     driverStandingsList = this.map {
                         DriverItem(
                             name = "${it.driverName} ${it.driverSurname.uppercase()}",
-                            team = it.constructorName
+                            team = it.constructorName,
+                            driverId = it.driverId
                         )
                     }
                     driver1.set(driverStandingsList.find {

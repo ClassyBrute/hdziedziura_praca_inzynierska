@@ -5,5 +5,6 @@ data class DriverResultsRaceItem (
     val country: String = "",
     val constructor: String = "",
     val position: String = "",
-    val points: String = ""
+    val points: String = "",
+    val name: String = ""
 )

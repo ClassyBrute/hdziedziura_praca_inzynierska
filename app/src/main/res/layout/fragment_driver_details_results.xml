@@ -11,7 +11,7 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:orientation="vertical">
 
@@ -24,6 +24,8 @@
             android:textColor="@color/white"
             android:clickable="true"
             android:focusable="true"
+            android:gravity="center"
+            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
             android:text='@{"Season "+vm.season}'/>
 
         <androidx.recyclerview.widget.RecyclerView
