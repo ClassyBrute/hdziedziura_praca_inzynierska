@@ -92,9 +92,18 @@ class HistoryFragment : BaseFragment() {
                                     bundle
                                 )
                             }
-                            is HistoryViewModel.Event.RaceClickEvent -> Toast.makeText(
-                                context, "Race ${it.item.country} click", Toast.LENGTH_SHORT
-                            ).show()
+                            is HistoryViewModel.Event.RaceClickEvent -> {
+                                val bundle = bundleOf(
+                                    "raceName" to it.item.raceName,
+                                    "circuitName" to it.item.circuitName,
+                                    "image" to it.item.image,
+                                    "map" to it.item.map
+                                )
+                                findNavController().navigate(
+                                    R.id.action_historyFragment_to_raceDetailsFragment,
+                                    bundle
+                                )
+                            }
                         }
                     }
                 }

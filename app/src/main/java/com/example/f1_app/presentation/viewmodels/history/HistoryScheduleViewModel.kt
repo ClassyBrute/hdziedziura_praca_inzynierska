@@ -80,7 +80,9 @@ class HistoryScheduleViewModel @Inject constructor(
                             country = it.name,
                             dateFrom = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateTo)!!),
                             image = it.image,
-                            raceName = it.raceName
+                            raceName = it.raceName,
+                            circuitName = it.circuitName,
+                            map = it.map
                         )
                     }.distinctBy { it.round }
                 }

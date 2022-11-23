@@ -2,9 +2,9 @@ package com.example.f1_app.presentation.ui.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.f1_app.presentation.ui.TeamDetailsFragment
 import com.example.f1_app.presentation.ui.TeamDetailsInformationFragment
 import com.example.f1_app.presentation.ui.TeamDetailsResultsFragment
-import com.example.f1_app.presentation.ui.TeamDetailsFragment
 
 class ViewPagerAdapterTeam(
     parentFragment: TeamDetailsFragment, private var totalCount: Int

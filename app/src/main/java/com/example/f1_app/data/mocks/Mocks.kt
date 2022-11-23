@@ -25,6 +25,29 @@ val mockFlags = mapOf(
     "UAE" to R.drawable.uae,
 )
 
+val mockMaps = mapOf(
+    "Bahrain" to R.drawable.bahrain_map,
+    "Saudi Arabia" to R.drawable.saudi_arabia_map,
+    "Australia" to R.drawable.australia_map,
+    "Italy" to R.drawable.italy_map,
+    "USA" to R.drawable.usa_map,
+    "Spain" to R.drawable.spain_map,
+    "Monaco" to R.drawable.monaco_map,
+    "Azerbaijan" to R.drawable.azerbaijan_map,
+    "Canada" to R.drawable.canada_map,
+    "UK" to R.drawable.uk_map,
+    "Austria" to R.drawable.austria_map,
+    "France" to R.drawable.france_map,
+    "Hungary" to R.drawable.hungary_map,
+    "Belgium" to R.drawable.belgium_map,
+    "Netherlands" to R.drawable.netherlands_map,
+    "Singapore" to R.drawable.singapore_map,
+    "Japan" to R.drawable.japan_map,
+    "Mexico" to R.drawable.mexico_map,
+    "Brazil" to R.drawable.brazil_map,
+    "UAE" to R.drawable.uae_map,
+)
+
 val mockDrivers = mapOf(
     "Max" to R.drawable.maxverstappen,
     "Sergio" to R.drawable.sergioperez,

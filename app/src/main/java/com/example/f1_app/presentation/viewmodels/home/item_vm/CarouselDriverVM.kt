@@ -33,12 +33,6 @@ data class CarouselDriverVM(
         )
     }
 
-    fun onRaceClick() {
-        itemsScope.launch {
-            events.emit(HomeViewModel.Event.CarouselClickEvent(item, position))
-        }
-    }
-
     override fun events(): SharedFlow<HomeViewModel.Event> {
         return events
     }

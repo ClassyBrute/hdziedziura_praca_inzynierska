@@ -67,7 +67,11 @@ class DriverDetailsResultsViewModel @Inject constructor(
                             it.country,
                             it.constructor,
                             it.position,
-                            it.points
+                            it.points,
+                            raceName = it.raceName,
+                            circuitName = it.circuitName,
+                            map = it.map,
+                            image = it.image
                         )
                     }
                     if (driverRaces.isEmpty()) events.emit(DriverDetailsViewModel.Event.EmptyResults)

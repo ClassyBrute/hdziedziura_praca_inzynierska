@@ -56,15 +56,18 @@ class HomeFragment : BaseFragment() {
                                     bundle
                                 )
                             }
-
-                            is HomeViewModel.Event.CarouselClickEvent -> Toast.makeText(
-                                context, "Race click ${it.item.title}", Toast.LENGTH_SHORT
-                            ).show()
-
-                            is HomeViewModel.Event.RaceClickEvent -> Toast.makeText(
-                                context, "Race click ${it.item.country}", Toast.LENGTH_SHORT
-                            ).show()
-
+                            is HomeViewModel.Event.RaceClickEvent -> {
+                                val bundle = bundleOf(
+                                    "raceName" to it.item.circuitName,
+                                    "circuitName" to it.item.raceName,
+                                    "image" to it.item.image,
+                                    "map" to it.item.map
+                                )
+                                findNavController().navigate(
+                                    R.id.action_homeFragment_to_raceDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is HomeViewModel.Event.ConstructorClickEvent -> {
                                 val bundle = bundleOf(
                                     "teamId" to it.item.id,
@@ -75,7 +78,6 @@ class HomeFragment : BaseFragment() {
                                     bundle
                                 )
                             }
-
                             is HomeViewModel.Event.ShowDriversEvent -> {
                                 viewModel.data.set(viewModel.newList)
                                 view?.findViewById<MaterialTextView>(R.id.button_show_all)?.visibility = View.GONE

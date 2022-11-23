@@ -198,7 +198,10 @@ class HomeViewModel @Inject constructor(
                             country = it.name,
                             dateFrom = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateFrom)!!),
                             dateTo = DateFormat.getDateInstance(DateFormat.MEDIUM).format(format.parse(it.dateTo)!!),
-                            image = it.image
+                            image = it.image,
+                            raceName = it.raceName,
+                            circuitName = it.circuitName,
+                            map = it.map
                         )
                     }.distinctBy { it.round }
                 }
@@ -263,7 +266,6 @@ class HomeViewModel @Inject constructor(
         object NavigateToStart: Event()
         object ShowDriversEvent: Event()
         class ConstructorClickEvent(val item: ConstructorItem, val position: Int) : Event()
-        class CarouselClickEvent(val item: CarouselDriverItem, val position: Int) : Event()
         class DriverClickEvent(val item: DriverItem, val position: Int) : Event()
         class RaceClickEvent(val item: RaceItem, val position: Int) : Event()
     }

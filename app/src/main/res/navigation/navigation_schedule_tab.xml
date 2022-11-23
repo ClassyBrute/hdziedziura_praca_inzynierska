@@ -5,5 +5,5 @@
     app:startDestination="@id/navigation_schedule">
 
     <include app:graph="@navigation/navigation_schedule"/>
-
+    <include app:graph="@navigation/navigation_race_details"/>
 </navigation>

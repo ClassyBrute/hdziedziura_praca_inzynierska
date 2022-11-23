@@ -8,5 +8,14 @@
     <fragment
         android:id="@+id/teamDetailsFragment"
         android:name="com.example.f1_app.presentation.ui.TeamDetailsFragment"
-        tools:layout="@layout/fragment_team_details"/>
+        tools:layout="@layout/fragment_team_details">
+
+        <action android:id="@+id/action_teamDetailsFragment_to_raceDetailsFragment"
+            app:destination="@id/navigation_race_details"
+            app:popUpTo="@id/navigation_race_details"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
 </navigation>

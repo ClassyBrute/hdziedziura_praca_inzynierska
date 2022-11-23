@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentScheduleBinding
 import com.example.f1_app.presentation.ui.adapter.ViewPagerAdapter
@@ -54,9 +56,18 @@ class ScheduleFragment : BaseFragment() {
                 launch {
                     viewModel.uiEvents.collect {
                         when (it) {
-                            is ScheduleViewModel.Event.RaceClickEvent -> Toast.makeText(
-                                context, "Race ${it.item.country} clicked", Toast.LENGTH_SHORT
-                            ).show()
+                            is ScheduleViewModel.Event.RaceClickEvent -> {
+                                val bundle = bundleOf(
+                                    "raceName" to it.item.circuitName,
+                                    "circuitName" to it.item.raceName,
+                                    "image" to it.item.image,
+                                    "map" to it.item.map
+                                )
+                                findNavController().navigate(
+                                    R.id.action_scheduleFragment_to_raceDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is ScheduleViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
                             ).show()

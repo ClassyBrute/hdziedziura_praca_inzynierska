@@ -7,10 +7,6 @@ import com.example.f1_app.domain.use_case.constructor.ConstructorFirstRaceUseCas
 import com.example.f1_app.domain.use_case.constructor.ConstructorFirstRaceUseCaseImpl
 import com.example.f1_app.domain.use_case.constructor.ConstructorStatsUseCase
 import com.example.f1_app.domain.use_case.constructor.ConstructorStatsUseCaseImpl
-import com.example.f1_app.domain.use_case.driver.DriverRacesAllTimeUseCase
-import com.example.f1_app.domain.use_case.driver.DriverRacesAllTimeUseCaseImpl
-import com.example.f1_app.domain.use_case.driver.DriverStatsAllTimeUseCase
-import com.example.f1_app.domain.use_case.driver.DriverStatsAllTimeUseCaseImpl
 import com.example.f1_app.presentation.ui.TeamDetailsInformationFragment
 import com.example.f1_app.presentation.viewmodels.teamDetails.TeamDetailsInformationViewModel
 import dagger.Binds

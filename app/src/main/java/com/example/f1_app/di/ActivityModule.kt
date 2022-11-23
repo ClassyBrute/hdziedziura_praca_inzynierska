@@ -32,6 +32,7 @@ import dagger.multibindings.IntoMap
         TeamDetailsFragmentModule::class,
         TeamDetailsInformationFragmentModule::class,
         TeamDetailsResultsFragmentModule::class,
+        RaceDetailsFragmentModule::class
     ]
 )
 interface ActivityModule {

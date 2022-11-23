@@ -62,7 +62,11 @@ class TeamDetailsResultsViewModel @Inject constructor(
                     points1 = driver1?.points.toString(),
                     driver2 = driver2?.name.toString(),
                     position2 = driver2?.position.toString(),
-                    points2 = driver2?.points.toString()
+                    points2 = driver2?.points.toString(),
+                    raceName = driver1?.raceName.toString(),
+                    circuitName = driver1?.circuitName.toString(),
+                    map = driver1?.map,
+                    image = driver1?.image
                 )
             )
         }
@@ -122,7 +126,11 @@ class TeamDetailsResultsViewModel @Inject constructor(
                                 it.constructor,
                                 it.position,
                                 it.points,
-                                it.name
+                                it.name,
+                                raceName = it.raceName,
+                                circuitName = it.circuitName,
+                                image = it.image,
+                                map = it.map
                             )
                         })
                         driversRaces.forEach {

@@ -25,4 +25,8 @@
     <string name="points">Points</string>
     <string name="team_name">Team Name</string>
     <string name="first_race">First Race</string>
+    <string name="map">Map</string>
+    <string name="information">Information</string>
+    <string name="first_grand_prix">First Grand Prix</string>
+    <string name="lap_record">Lap record</string>
 </resources>

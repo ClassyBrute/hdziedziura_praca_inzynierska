@@ -6,5 +6,6 @@
 
     <include app:graph="@navigation/navigation_team"/>
     <include app:graph="@navigation/navigation_team_details"/>
+    <include app:graph="@navigation/navigation_race_details"/>
 
 </navigation>

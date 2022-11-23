@@ -3,7 +3,6 @@ package com.example.f1_app.presentation.viewmodels.teamDetails.item_vm
 import com.example.f1_app.R
 import com.example.f1_app.common.ItemWithEvent
 import com.example.f1_app.common.RecyclerViewItem
-import com.example.f1_app.presentation.homeRvItems.ConstructorItem
 import com.example.f1_app.presentation.homeRvItems.ConstructorResultsRaceItem
 import com.example.f1_app.presentation.viewmodels.ItemVm
 import com.example.f1_app.presentation.viewmodels.teamDetails.TeamDetailsViewModel

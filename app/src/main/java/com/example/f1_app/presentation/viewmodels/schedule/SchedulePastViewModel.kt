@@ -87,7 +87,9 @@ class SchedulePastViewModel @Inject constructor(
                             dateFrom = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRANCE).format(format.parse(it.dateFrom)!!),
                             dateTo = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRANCE).format(format.parse(it.dateTo)!!),
                             image = it.image,
-                            raceName = it.raceName
+                            raceName = it.raceName,
+                            circuitName = it.circuitName,
+                            map = it.map
                         )
                     }.distinctBy { it.round }
                 }

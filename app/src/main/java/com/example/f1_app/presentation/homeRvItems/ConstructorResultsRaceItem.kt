@@ -9,4 +9,9 @@ data class ConstructorResultsRaceItem (
     var driver2: String = "",
     val position2: String = "",
     val points2: String = "",
+    val name: String = "",
+    val raceName: String = "",
+    val circuitName: String = "",
+    val image: Int? = 0,
+    val map: Int? = 0
 )

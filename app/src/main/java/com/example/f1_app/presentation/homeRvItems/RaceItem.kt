@@ -6,5 +6,7 @@ data class RaceItem(
     val dateFrom: String = "",
     val dateTo: String = "",
     val image: Int? = 0,
-    val raceName: String = ""
+    val raceName: String = "",
+    val circuitName: String = "",
+    val map: Int? = 0
 )

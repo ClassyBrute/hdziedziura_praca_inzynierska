@@ -73,8 +73,8 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
                         navController.popBackStack()
                 }
                 binding.bottomNavigation.menu[1] -> {
-//                    if (navController.currentDestination?.id == R.id.shopProductListFragment)
-//                        navController.popBackStack()
+                    if (navController.currentDestination?.id == R.id.scheduleFragment)
+                        navController.popBackStack()
                 }
                 binding.bottomNavigation.menu[2] -> {
                     if (navController.currentDestination?.id != R.id.driversFragment)

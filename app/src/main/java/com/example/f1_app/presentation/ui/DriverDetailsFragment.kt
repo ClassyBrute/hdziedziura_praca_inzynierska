@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.f1_app.R
 import com.example.f1_app.databinding.FragmentDriverDetailsBinding
 import com.example.f1_app.presentation.ext.viewModels
@@ -59,9 +61,18 @@ class DriverDetailsFragment : BaseFragment() {
                             is DriverDetailsViewModel.Event.FetchingErrorEvent -> Toast.makeText(
                                 context, getString(R.string.error_fetching), Toast.LENGTH_SHORT
                             ).show()
-                            is DriverDetailsViewModel.Event.RaceClickEvent -> Toast.makeText(
-                                context, "Race ${it.item.country} click", Toast.LENGTH_SHORT
-                            ).show()
+                            is DriverDetailsViewModel.Event.RaceClickEvent -> {
+                                val bundle = bundleOf(
+                                    "raceName" to it.item.raceName,
+                                    "circuitName" to it.item.circuitName,
+                                    "image" to it.item.image,
+                                    "map" to it.item.map
+                                )
+                                findNavController().navigate(
+                                    R.id.action_driverDetailsFragment_to_raceDetailsFragment,
+                                    bundle
+                                )
+                            }
                             is DriverDetailsViewModel.Event.EmptyResults -> Toast.makeText(
                                 context, "Driver had not raced this season", Toast.LENGTH_SHORT
                             ).show()

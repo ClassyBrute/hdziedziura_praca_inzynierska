@@ -12,10 +12,26 @@
 
         <action android:id="@+id/action_historyFragment_to_driverDetailsFragment"
             app:destination="@id/navigation_driver_details"
-            app:popUpTo="@id/historyFragment"/>
+            app:popUpTo="@id/historyFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
 
         <action android:id="@+id/action_historyFragment_to_teamDetailsFragment"
             app:destination="@id/navigation_team_details"
-            app:popUpTo="@id/historyFragment"/>
+            app:popUpTo="@id/historyFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+        <action android:id="@+id/action_historyFragment_to_raceDetailsFragment"
+            app:destination="@id/navigation_race_details"
+            app:popUpTo="@id/historyFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 </navigation>

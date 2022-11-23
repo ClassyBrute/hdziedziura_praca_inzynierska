@@ -8,5 +8,15 @@
     <fragment
         android:id="@+id/driverDetailsFragment"
         android:name="com.example.f1_app.presentation.ui.DriverDetailsFragment"
-        tools:layout="@layout/fragment_driver_details"/>
+        tools:layout="@layout/fragment_driver_details">
+
+        <action android:id="@+id/action_driverDetailsFragment_to_raceDetailsFragment"
+            app:destination="@id/navigation_race_details"
+            app:popUpTo="@id/navigation_race_details"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+    </fragment>
 </navigation>
